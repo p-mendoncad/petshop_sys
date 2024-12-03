@@ -1,5 +1,5 @@
 import React from 'react';
-import 'bootswatch/dist/flatly/bootstrap.css';
+import 'bootswatch/dist/minty/bootstrap.css';
 
 import NavbarItem from './navbarItem';
 
@@ -25,49 +25,9 @@ function Navbar(props) {
           <ul className='navbar-nav'>
             <NavbarItem
               render='true'
-              href='/listagem-usuarios'
-              label='Usuários'
+              href='/listagem-cargos'
+              label='Cargos'
             />
-          </ul>
-          <ul className='navbar-nav'>
-            <NavbarItem render='true' href='/listagem-cursos' label='Cursos' />
-          </ul>
-          <ul className='navbar-nav'>
-            <NavbarItem
-              render='true'
-              href='/listagem-professores'
-              label='Professores'
-            />
-          </ul>
-          <ul className='navbar-nav'>
-            <NavbarItem render='true' href='/listagem-alunos' label='Alunos' />
-          </ul>
-          <ul className='navbar-nav'>
-            <NavbarItem
-              render='true'
-              href='/listagem-categorias'
-              label='Categorias'
-            />
-          </ul>
-          <ul className='navbar-nav'>
-            <NavbarItem
-              render='true'
-              href='/listagem-atividades-complementares'
-              label='Atividades'
-            />
-          </ul>
-          <ul className='navbar-nav'>
-            <NavbarItem
-              render='true'
-              href='/acompanhamento-atividades-complementares'
-              label='Acompanhamento'
-            />
-          </ul>
-          <ul className='navbar-nav'>
-            <NavbarItem render='true' href='/login' label='Entrar' />
-          </ul>
-          <ul className='navbar-nav'>
-            <NavbarItem render='true' href='/' label='Sair' />
           </ul>
         </div>
       </div>

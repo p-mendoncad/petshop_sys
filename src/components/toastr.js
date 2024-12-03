@@ -33,3 +33,5 @@ export function mensagemSucesso(mensagem) {
 export function mensagemAlert(mensagem) {
   mostrarMensagem('Alerta', mensagem, 'warning');
 }
+
+export default toastr;

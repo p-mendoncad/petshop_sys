@@ -11,8 +11,8 @@ function Rotas(props) {
         <BrowserRouter>
             <Routes>
 
-                <Route path='/cadastro-cargos/:idParam?' element={<CadastroCargo />} />
-                <Route path='/listagem-cursos' element={<ListagemCursos />} />
+                <Route path='/cadastro-cargo/:idParam?' element={<CadastroCargo />} />
+                <Route path='/listagem-cargos' element={<ListagemCargos />} />
             </Routes>
         </BrowserRouter>
     );
