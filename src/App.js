@@ -10,8 +10,12 @@ import Rotas from './rotas.js';
 
 function App() {
   return (
-    <div className='App'>
-      <Button variant='contained'>Hello World</Button>
+    <div className='Menu'>
+            <div className='container'>
+        <Rotas />
+        <Navbar />
+      </div>
+
     </div>
   );
 }
