@@ -24,6 +24,14 @@ import CadastroProduto from './views/cadastro-produto';
 
 import ListagemProdutos from './views/listagem-produtos';
 
+import CadastroEstoque from './views/cadastro-estoque';
+
+import ListagemEstoque from './views/listagem-estoque';
+
+import CadastroCaixa from './views/cadastro-caixa';
+
+import ListagemCaixa from './views/listagem-caixa';
+
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function Rotas(props) {
