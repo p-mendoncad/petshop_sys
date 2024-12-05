@@ -1,0 +1,64 @@
+
+{
+  "usuarios": [
+    { "id": 1, "login": "usuario01", "senha": "1", "senhaRepeticao": "1", "cpf": "111111111", "admin": true },
+    { "id": 2, "login": "usuario02", "senha": "1", "senhaRepeticao": "1", "cpf": "111111111", "admin": true },
+    { "id": 3, "login": "usuario03", "senha": "1", "senhaRepeticao": "1", "cpf": "111111111", "admin": true },
+    { "id": 4, "login": "usuario04", "senha": "1", "senhaRepeticao": "1", "cpf": "111111111", "admin": false },
+    { "id": 5, "login": "usuario05", "senha": "1", "senhaRepeticao": "1", "cpf": "111111111", "admin": false }
+  ],
+  "cargo": [
+    { "id": 1, "nome": "caixa", "salario": 1600.90 },
+    {"id":2, "nome":"tosador", "salario":1500.00}
+  ],
+  "funcionario": [
+    { "id": 1, "nome": "Wanderley", "dataNascimento": "01/01/1996", "cpf": "111111111", "email":"funcionario1@email.com", "celular": "1111-1111", "logradouro": "Rua das Flores", "numero": "123","complemento": "Apt 101","bairro": "Jardim das Rosas","cidade": "São Paulo","estado": "SP","cep": "01234-567", "cargoId":1 },
+    { "id": 2, "nome": "Mariana Silva", "dataNascimento": "15/05/1990", "cpf": "222222222", "email": "funcionario2@email.com", "celular": "2222-2222", "logradouro": "Avenida Paulista", "numero": "456", "complemento": "Sala 201", "bairro": "Bela Vista", "cidade": "São Paulo", "estado": "SP", "cep": "01311-000", "cargoId": 2 },
+    { "id": 3, "nome": "Carlos Pereira", "dataNascimento": "10/10/1985", "cpf": "333333333", "email": "funcionario3@email.com", "celular": "3333-3333", "logradouro": "Rua das Palmeiras", "numero": "789", "complemento": "Casa", "bairro": "Pinheiros", "cidade": "São Paulo", "estado": "SP", "cep": "05401-100", "cargoId": 3 }
+  ],
+  "clientes": [
+    { "id": 1, "nome": "Carlos Silva", "dataNascimento": "15/03/1985", "cpf": "22222222222", "email": "carlos.silva@email.com", "celular": "9876-5432", "logradouro": "Avenida Brasil", "numero": "456", "complemento": "Casa 2", "bairro": "Centro", "cidade": "Rio de Janeiro", "estado": "RJ", "cep": "20000-000", "fidelidade": 35},
+    { "id": 2, "nome": "Ana Pereira", "dataNascimento": "10/07/1992", "cpf": "33333333333", "email": "ana.pereira@email.com", "celular": "9987-6543", "logradouro": "Rua das Acácias", "numero": "789", "complemento": "Bloco C - 304", "bairro": "Vila das Flores", "cidade": "Belo Horizonte", "estado": "MG", "cep": "30123-456", "fidelidade": 20 },
+    { "id": 3, "nome": "Marcelo Oliveira", "dataNascimento": "22/11/1980", "cpf": "44444444444", "email": "marcelo.oliveira@email.com", "celular": "9123-4567", "logradouro": "Rua do Sol", "numero": "101", "complemento": "Sala 502", "bairro": "Itaim Bibi", "cidade": "São Paulo", "estado": "SP", "cep": "04567-890", "fidelidade": 15}
+  ],
+  "fornecedor": [
+    {"id":1,"nome":"Carlos Souza","dataNascimento":"23/05/1987","cnpj":"34.567.890/0001-55","email":"carlos.souza@email.com","celular":"9876-5432","logradouro":"Avenida Paulista","numero":"5000","complemento":"Sala 905","bairro":"Bela Vista","cidade":"São Paulo","estado":"SP","cep":"01310-100","dataCadastro":"20/03/2024","tipoProduto":"Comestiveis"},
+    {"id":2,"nome":"Juliana Almeida","dataNascimento":"15/08/1990","cnpj":"76.543.210/0001-88","email":"juliana.almeida@email.com","celular":"9234-5678","logradouro":"Rua XV de Novembro","numero":"1234","complemento":"Pavimento 2","bairro":"Centro","cidade":"Curitiba","estado":"PR","cep":"80010-000","dataCadastro":"12/02/2024","tipoProduto":"Roupas e acessórios para Animais"},
+    {"id":3,"nome":"Felipe Martins","dataNascimento":"05/12/1983","cnpj":"12.345.678/0001-99","email":"felipe.martins@email.com","celular":"9811-2233","logradouro":"Rua das Flores","numero":"85","complemento":"Casa 2","bairro":"Vila Mariana","cidade":"São Paulo","estado":"SP","cep":"04110-030","dataCadastro":"30/01/2024","tipoProduto":"Brinquedos"}
+  ],
+  "racas":[
+    { "id": 1, "nome": "Labrador" },
+    { "id": 2, "nome": "Poodle" },
+    { "id": 3, "nome": "Bulldog Inglês" }
+  ],
+  "pets": [
+    { "id": 1, "nome": "Pet 1", "dataNascimento": "01/01/2024", "peso": 5.3, "vacinaRaiva": true,  "sexo": "M", "observacao": "não usar xampu com sal","racaId": 1 },
+    { "id": 2, "nome": "Pet 2", "dataNascimento": "15/08/2022", "peso": 8.2, "vacinaRaiva": true, "sexo": "F", "observacao": "tem pele sensível, usar xampu hipoalergênico", "racaId": 2 },
+    { "id": 3, "nome": "Pet 3", "dataNascimento": "03/05/2021", "peso": 3.7, "vacinaRaiva": false, "sexo": "M", "observacao": "cuidado com barulho alto", "racaId": 3 }
+  ],
+  "servico": [
+    { "id": 1, "nome": "Banho com tosa", "duracao": 60, "preco": 90.00},
+    { "id": 2, "nome": "Banho Comum", "duracao": 30, "preco": 40.00 },
+    { "id": 3, "nome": "Tosa Individual", "duracao": 45, "preco": 50.00 }
+  ],
+  "agendamentos":[
+    {"id":1,"data":"2024-11-20","horario":"10:00","horaEntrada":"10:00","horaSaida":"11:00","servicoId":1, "petId":1},
+    {"id":2,"data":"2024-11-21","horario":"14:00","horaEntrada":"14:00","horaSaida":"15:00","servicoId":2, "petId":2},
+    {"id":3,"data":"2024-11-22","horario":"09:30","horaEntrada":"09:30","horaSaida":"10:30","servicoId":3, "petId":3}
+  ],
+  "produtos": [
+  {"id":1,"nome": "Ração Premium", "precoVenda": 120.00, "quantidade": 50, "descricao": "Ração para cães adultos de porte médio", "quantMin": 10, "quantMax": 200, "lote": "A1234", "vencimento": "2025-06-15", "codigo": "RCAPM1234", "perecibilidade": true, "dataEntrada": "2024-11-01", "uniMedida": "kg", "precoCompra": 80.00, "codBarras": "7891234567890", "idFornecedor": 1,"idSetor":1},
+  {"id":3,"nome": "Shampoo para Cachorros", "precoVenda": 30.00, "quantidade": 100, "descricao": "Shampoo para pelagem brilhante", "quantMin": 20, "quantMax": 300, "lote": "B5678", "vencimento": "2026-01-10", "codigo": "SHPC1234", "perecibilidade": false, "dataEntrada": "2024-10-15", "uniMedida": "ml", "precoCompra": 15.00, "codBarras": "7899876543210", "idFornecedor":2,"idSetor":2},
+  {"id":2,"nome": "Brinquedo para Gatos", "precoVenda": 15.00, "quantidade": 200, "descricao": "Brinquedo interativo para gatos", "quantMin": 30, "quantMax": 500, "lote": "C9012", "vencimento": "2027-12-31", "codigo": "BRGC1234", "perecibilidade": false, "dataEntrada": "2024-09-05", "uniMedida": "un", "precoCompra": 8.00, "codBarras": "7896543219876", "idFornecedor": 3,"idSetor":3}
+],
+"estoque":[
+  {"id":1, "setor": 1, "descricao": "Alimentos"},
+  {"id":1, "setor": 2, "descricao": "Brinquedos"},
+  {"id":1, "setor": 3, "descricao": "Miscelânia"}
+],
+"vendas": [
+ {"id":1, "nome": "Ração Premium", "quantidade": 2, "valorUnitario": 120.00, "valorTotal": 240.00,"formaPagamento": "Pix", "cpfCliente": "123.456.789-00" },
+ {"id":2,"nome": "Brinquedo para Gatos", "quantidade": 3, "valorUnitario": 15.00, "valorTotal": 45.00,"formaPagamento": "Cartão de Crédito","cpfCliente": null },
+ {"id":3,"nome": "Coleira para Cachorros", "quantidade": 2, "valorUnitario": 25.00, "valorTotal": 50.00,"formaPagamento": "Dinheiro","cpfCliente": "987.654.321-00" }
+]
+}
