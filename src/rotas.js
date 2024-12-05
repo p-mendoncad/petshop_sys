@@ -55,7 +55,13 @@ function Rotas(props) {
                 <Route path='/listagem-fornecedores' element={<ListagemFornecedores />} />
 
                 <Route path='/cadastro-produto/:idParam?' element={<CadastroProduto />} />
-                <Route path='/listagem-produtos' element={<ListagemProdutos />} /> 
+                <Route path='/listagem-produtos' element={<ListagemProdutos />} />
+
+                <Route path='/cadastro-produto/:idParam?' element={<CadastroEstoque />} />
+                <Route path='/listagem-produtos' element={<ListagemEstoque />} />
+
+                <Route path='/cadastro-produto/:idParam?' element={<CadastroCaixa />} />
+                <Route path='/listagem-produtos' element={<ListagemCaixa />} />
             </Routes>
         </BrowserRouter>
     );
