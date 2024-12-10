@@ -12,8 +12,10 @@ import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
+import axios from 'axios';
+import { BASE_URL } from '../config/axios';
 
-//const baseURL = `${BASE_URL}/cargos`;
+const baseURL = `${BASE_URL}/cargos`;
 
 function ListagemCargos() {
   const navigate = useNavigate();
@@ -49,13 +51,13 @@ function ListagemCargos() {
   //     });
   // }
 
-  // React.useEffect(() => {
-  //   axios.get(baseURL).then((response) => {
-  //     setDados(response.data);
-  //   });
-  // }, []);
+  React.useEffect(() => {
+     axios.get(baseURL).then((response) => {
+       setDados(response.data);
+     });
+   }, []);
 
-  // if (!dados) return null;
+   if (!dados) return null;
 
   return (
     <div className='container'>
@@ -78,28 +80,28 @@ function ListagemCargos() {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* {dados.map((dado) => (
+                  {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.salario}</td>*/}
+                      <td>{dado.salario}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton
                             aria-label='edit'
-                            //onClick={() => editar(dado.id)}
+                            onClick={() => editar(dado.id)}
                           >
                             <EditIcon />
                           </IconButton>
                           <IconButton
                             aria-label='delete'
-                           // onClick={() => excluir(dado.id)}
+                          //  onClick={() => excluir(dado.id)}
                           >
                             <DeleteIcon />
                           </IconButton>
                         </Stack>
                       </td>
-                    {/* </tr>
-                  ))} */}
+                    </tr>
+                  ))}
                 </tbody>
               </table>{' '}
             </div>

@@ -12,8 +12,10 @@ import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
+import axios from 'axios';
+import { BASE_URL } from '../config/axios';
 
-//const baseURL = `${BASE_URL}/fornecedores`;
+const baseURL = `${BASE_URL}/fornecedores`;
 
 function ListagemFornecedores() {
   const navigate = useNavigate();
@@ -49,13 +51,13 @@ function ListagemFornecedores() {
   //     });
   // }
 
-  // React.useEffect(() => {
-  //   axios.get(baseURL).then((response) => {
-  //     setDados(response.data);
-  //   });
-  // }, []);
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setDados(response.data);
+    });
+  }, []);
 
-  // if (!dados) return null;
+  if (!dados) return null;
 
   return (
     <div className='container'>
@@ -89,7 +91,7 @@ function ListagemFornecedores() {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* {dados.map((dado) => (
+                  {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
                       <td>{dado.cnpj}</td>
@@ -103,12 +105,12 @@ function ListagemFornecedores() {
                       <td>{dado.estado}</td>
                       <td>{dado.cep}</td>
                       <td>{dado.dataCadastro}</td>
-                      <td>{dado.tipoProduto}</td>*/}
+                      <td>{dado.tipoProduto}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton
                             aria-label='edit'
-                            //onClick={() => editar(dado.id)}
+                            onClick={() => editar(dado.id)}
                           >
                             <EditIcon />
                           </IconButton>
@@ -120,8 +122,8 @@ function ListagemFornecedores() {
                           </IconButton>
                         </Stack>
                       </td>
-                    {/* </tr>
-                  ))} */}
+                    </tr>
+                  ))}
                 </tbody>
               </table>{' '}
             </div>
