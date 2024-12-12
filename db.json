@@ -49,12 +49,12 @@
   "produtos": [
   {"id":1,"nome": "Ração Premium", "precoVenda": 120.00, "quantidade": 50, "descricao": "Ração para cães adultos de porte médio", "quantMin": 10, "quantMax": 200, "lote": "A1234", "vencimento": "2025-06-15", "perecibilidade": true, "dataEntrada": "2024-11-01", "uniMedida": "kg", "precoCompra": 80.00, "codBarras": "7891234567890", "idFornecedor": 1,"idSetor":1},
   {"id":3,"nome": "Shampoo para Cachorros", "precoVenda": 30.00, "quantidade": 100, "descricao": "Shampoo para pelagem brilhante", "quantMin": 20, "quantMax": 300, "lote": "B5678", "vencimento": "2026-01-10", "perecibilidade": false, "dataEntrada": "2024-10-15", "uniMedida": "ml", "precoCompra": 15.00, "codBarras": "7899876543210", "idFornecedor":2,"idSetor":2},
-  {"id":2,"nome": "Brinquedo para Gatos", "precoVenda": 15.00, "quantidade": 200, "descricao": "Brinquedo interativo para gatos", "quantMin": 30, "quantMax": 500, "lote": "C9012", "vencimento": "2027-12-31", "perecibilidade": false, "dataEntrada": "2024-09-05", "uniMedida": "un", "precoCompra": 8.00, "codBarras": "7896543219876", "idFornecedor": 3,"idSetor":3}
+  {"id":2,"nome": "Brinquedo para Gatos", "precoVenda": 15.00, "qu  antidade": 200, "descricao": "Brinquedo interativo para gatos", "quantMin": 30, "quantMax": 500, "lote": "C9012", "vencimento": "2027-12-31", "perecibilidade": false, "dataEntrada": "2024-09-05", "uniMedida": "un", "precoCompra": 8.00, "codBarras": "7896543219876", "idFornecedor": 3,"idSetor":3}
 ],
 "estoque":[
   {"id":1, "setor": 1, "descricao": "Alimentos"},
-  {"id":1, "setor": 2, "descricao": "Brinquedos"},
-  {"id":1, "setor": 3, "descricao": "Miscelânia"}
+  {"id":2, "setor": 2, "descricao": "Brinquedos"},
+  {"id":3, "setor": 3, "descricao": "Miscelânia"}
 ],
 "vendas": [
  {"id":1, "nome": "Ração Premium", "quantidade": 2, "valorUnitario": 120.00, "valorTotal": 240.00,"formaPagamento": "Pix", "cpfCliente": "123.456.789-00" },

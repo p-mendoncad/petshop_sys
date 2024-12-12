@@ -26,11 +26,15 @@ import ListagemProdutos from './views/listagem-produtos';
 
 import CadastroEstoque from './views/cadastro-estoque';
 
-import ListagemEstoque from './views/listagem-estoque';
+import ListagemEstoques from './views/listagem-estoques';
 
 import CadastroCaixa from './views/cadastro-caixa';
 
-import ListagemCaixa from './views/listagem-caixa';
+import ListagemCaixas from './views/listagem-caixas';
+
+import CadastroVenda from './views/cadastro-venda';
+
+import ListagemVendas from './views/listagem-vendas';
 
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
@@ -58,10 +62,13 @@ function Rotas(props) {
                 <Route path='/listagem-produtos' element={<ListagemProdutos />} />
 
                 <Route path='/cadastro-produto/:idParam?' element={<CadastroEstoque />} />
-                <Route path='/listagem-produtos' element={<ListagemEstoque />} />
+                <Route path='/listagem-produtos' element={<ListagemEstoques />} />
 
                 <Route path='/cadastro-produto/:idParam?' element={<CadastroCaixa />} />
-                <Route path='/listagem-produtos' element={<ListagemCaixa />} />
+                <Route path='/listagem-produtos' element={<ListagemCaixas />} />
+
+                <Route path='/cadastro-venda/:idParam?' element={<CadastroVenda/>} />
+                <Route path='/listagem-vendas/' element={<ListagemVendas/>} />
             </Routes>
         </BrowserRouter>
     );

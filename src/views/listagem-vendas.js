@@ -15,17 +15,17 @@ import EditIcon from '@mui/icons-material/Edit';
 import axios from 'axios';
 import { BASE_URL2 } from '../config/axios';
 
-const baseURL = `${BASE_URL2}/clientes`;
+const baseURL = `${BASE_URL2}/vendas`;
 
-function ListagemClientes() {
+function ListagemVendas() {
   const navigate = useNavigate();
 
   const cadastrar = () => {
-    navigate(`/cadastro-cliente`);
+    navigate(`/cadastro-venda`);
   };
 
   const editar = (id) => {
-    navigate(`/cadastro-cliente/${id}`);
+    navigate(`/cadastro-venda/${id}`);
   };
 
   const [dados, setDados] = React.useState(null);
@@ -61,7 +61,7 @@ function ListagemClientes() {
 
   return (
     <div className='container'>
-      <Card title='Listagem de Clientes'>
+      <Card title='Listagem de Vendas'>
         <div className='row'>
           <div className='col-lg-12'>
             <div className='bs-component'>
@@ -70,40 +70,42 @@ function ListagemClientes() {
                 className='btn btn-warning'
                 onClick={() => cadastrar()}
               >
-                Novo Cliente
+                Novo Vendas
               </button>
               <table className='table table-hover'>
                 <thead>
                   <tr>
                         <th scope='col'>Nome</th>
-                        <th scope='col'>CNPJ</th>
-                        <th scope='col'>E-mail</th>
-                        <th scope='col'>Celular</th>
+                        <th scope='col'>Quantidade</th>
+                        <th scope='col'>Valor Unitário</th>
+                        <th scope='col'>Valor Total</th>
                         {/* <th scope='col'>Logradouro</th>
                         <th scope='col'>Número</th>
                         <th scope='col'>Complemento</th>
                         <th scope='col'>Bairro</th>
                         <th scope='col'>Cidade</th>
                         <th scope='col'>Estado</th> */}
-                        <th scope='col'>CEP</th>
-                        {/* <th scope='col'>Data de Cadastro</th>*/}
+                        <th scope='col'>Forma de Pagamento</th>
+                        {/* <th scope='col'>Data de Cadastro</th> */}
+                        <th scope='col'>CPF do Cliente</th>
                   </tr>
                 </thead>
                 <tbody>
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.cnpj}</td>
-                      <td>{dado.email}</td>
-                      <td>{dado.celular}</td>
+                      <td>{dado.quantidade}</td>
+                      <td>{dado.valorUnitario}</td>
+                      <td>{dado.valorTotal}</td>
                       {/* <td>{dado.logradouro}</td>
                       <td>{dado.numero}</td>
                       <td>{dado.complemento}</td>
                       <td>{dado.bairro}</td>
                       <td>{dado.cidade}</td>
                       <td>{dado.estado}</td> */}
-                      <td>{dado.cep}</td>
+                      <td>{dado.formaPagamento}</td>
                       {/* <td>{dado.dataCadastro}</td> */}
+                      <td>{dado.cpfCliente}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton
@@ -132,4 +134,4 @@ function ListagemClientes() {
   );
 }
 
-export default ListagemClientes;
+export default ListagemVendas;

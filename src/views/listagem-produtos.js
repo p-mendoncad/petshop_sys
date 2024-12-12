@@ -12,8 +12,10 @@ import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
+import axios from 'axios';
+import { BASE_URL } from '../config/axios';
 
-//const baseURL = `${BASE_URL}/produtos`;
+const baseURL = `${BASE_URL}/produtos`;
 
 function ListagemProdutos() {
   const navigate = useNavigate();
@@ -49,13 +51,13 @@ function ListagemProdutos() {
   //     });
   // }
 
-  // React.useEffect(() => {
-  //   axios.get(baseURL).then((response) => {
-  //     setDados(response.data);
-  //   });
-  // }, []);
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setDados(response.data);
+    });
+  }, []);
 
-  // if (!dados) return null;
+  if (!dados) return null;
 
   return (
     <div className='container'>
@@ -78,31 +80,37 @@ function ListagemProdutos() {
                     <th scope='col'>Quantidade</th>
                     <th scope='col'>Descrição</th>
                     <th scope='col'>Qtd. Mínima</th>
-                    <th scope='col'>Qtd. Máxima</th>
-                    <th scope='col'>Lote</th>
+                    {/* <th scope='col'>Qtd. Máxima</th> */}
+                    {/* <th scope='col'>Lote</th> */}
                     <th scope='col'>Vencimento</th>
-                    <th scope='col'>Perecibilidade</th>
+                    {/* <th scope='col'>Perecibilidade</th> */}
                     <th scope='col'>Entrada</th>
-                    <th scope='col'>Uni. Medida</th>
+                    {/* <th scope='col'>Uni. Medida</th> */}
                     <th scope='col'>Preço de Compra</th>
-                    <th scope='col'>Cód. Barras</th>
-                    <th scope='col'>Fornecedor</th>
-                    <th scope='col'>Setor</th>
+                    {/* <th scope='col'>Cód. Barras</th> */}
+                    {/* <th scope='col'>Fornecedor</th> */}
+                    {/* <th scope='col'>Setor</th> */}
 
                     
 
                   </tr>
                 </thead>
                 <tbody>
-                  {/* {dados.map((dado) => (
+                  {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.salario}</td>*/}
+                      <td>{dado.precoVenda}</td>
+                      <td>{dado.quantidade}</td>
+                      <td>{dado.descricao}</td>
+                      <td>{dado.quantMin}</td>
+                      <td>{dado.vencimento}</td>
+                      <td>{dado.dataEntrada}</td>
+                      <td>{dado.precoCompra}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton
                             aria-label='edit'
-                            //onClick={() => editar(dado.id)}
+                            onClick={() => editar(dado.id)}
                           >
                             <EditIcon />
                           </IconButton>
@@ -114,8 +122,8 @@ function ListagemProdutos() {
                           </IconButton>
                         </Stack>
                       </td>
-                    {/* </tr>
-                  ))} */}
+                    </tr>
+                  ))}
                 </tbody>
               </table>{' '}
             </div>

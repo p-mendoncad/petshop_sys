@@ -79,14 +79,14 @@ function ListagemFornecedores() {
                         <th scope='col'>CNPJ</th>
                         <th scope='col'>E-mail</th>
                         <th scope='col'>Celular</th>
-                        <th scope='col'>Logradouro</th>
+                        {/* <th scope='col'>Logradouro</th>
                         <th scope='col'>Número</th>
                         <th scope='col'>Complemento</th>
                         <th scope='col'>Bairro</th>
                         <th scope='col'>Cidade</th>
-                        <th scope='col'>Estado</th>
+                        <th scope='col'>Estado</th> */}
                         <th scope='col'>CEP</th>
-                        <th scope='col'>Data de Cadastro</th>
+                        {/* <th scope='col'>Data de Cadastro</th> */}
                         <th scope='col'>Tipo de Produto</th>
                   </tr>
                 </thead>
@@ -97,14 +97,14 @@ function ListagemFornecedores() {
                       <td>{dado.cnpj}</td>
                       <td>{dado.email}</td>
                       <td>{dado.celular}</td>
-                      <td>{dado.logradouro}</td>
+                      {/* <td>{dado.logradouro}</td>
                       <td>{dado.numero}</td>
                       <td>{dado.complemento}</td>
                       <td>{dado.bairro}</td>
                       <td>{dado.cidade}</td>
-                      <td>{dado.estado}</td>
+                      <td>{dado.estado}</td> */}
                       <td>{dado.cep}</td>
-                      <td>{dado.dataCadastro}</td>
+                      {/* <td>{dado.dataCadastro}</td> */}
                       <td>{dado.tipoProduto}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
