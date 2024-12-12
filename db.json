@@ -27,14 +27,14 @@
     {"id":3,"nome":"Felipe Martins","dataNascimento":"05/12/1983","cnpj":"12.345.678/0001-99","email":"felipe.martins@email.com","celular":"9811-2233","logradouro":"Rua das Flores","numero":"85","complemento":"Casa 2","bairro":"Vila Mariana","cidade":"São Paulo","estado":"SP","cep":"04110-030","dataCadastro":"30/01/2024","tipoProduto":"Brinquedos"}
   ],
   "racas":[
-    { "id": 1, "nome": "Labrador" },
-    { "id": 2, "nome": "Poodle" },
-    { "id": 3, "nome": "Bulldog Inglês" }
+    { "id": 1, "animal":"G", "nome": "Sphynx" },
+    { "id": 2, "animal":"C", "nome": "Labrador" },
+    { "id": 3, "animal":"C", "nome": "Bulldog Inglês" }
   ],
   "pets": [
-    { "id": 1, "nome": "Pet 1", "dataNascimento": "01/01/2024", "peso": 5.3, "vacinaRaiva": true,  "sexo": "M", "observacao": "não usar xampu com sal","racaId": 1 },
-    { "id": 2, "nome": "Pet 2", "dataNascimento": "15/08/2022", "peso": 8.2, "vacinaRaiva": true, "sexo": "F", "observacao": "tem pele sensível, usar xampu hipoalergênico", "racaId": 2 },
-    { "id": 3, "nome": "Pet 3", "dataNascimento": "03/05/2021", "peso": 3.7, "vacinaRaiva": false, "sexo": "M", "observacao": "cuidado com barulho alto", "racaId": 3 }
+    { "id": 1, "nome": "Pet 1", "dataNascimento": "01/01/2024", "peso": 3.3, "vacinaRaiva": true,  "sexo": "M", "observacao": "não usar xampu com sal", "nomeRaca":"Sphynx","racaId": 1, "cliente":"Carlos Silva"},
+    { "id": 2, "nome": "Pet 2", "dataNascimento": "15/08/2022", "peso": 13.2, "vacinaRaiva": true, "sexo": "F", "observacao": "tem pele sensível, usar xampu hipoalergênico","nomeRaca":"Labrador","racaId": 2, "cliente":"Ana Pereira" },
+    { "id": 3, "nome": "Pet 3", "dataNascimento": "03/05/2021", "peso": 8.7, "vacinaRaiva": false, "sexo": "M", "observacao": "cuidado com barulho alto","nomeRaca":"Bulldog Inglês", "racaId": 3, "cliente":"Marcelo Oliveira" }
   ],
   "servicos": [
     { "id": 1, "nome": "Banho com tosa", "duracao": 60, "preco": 90.00},
