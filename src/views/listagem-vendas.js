@@ -70,7 +70,7 @@ function ListagemVendas() {
                 className='btn btn-warning'
                 onClick={() => cadastrar()}
               >
-                Novo Vendas
+                Nova Venda
               </button>
               <table className='table table-hover'>
                 <thead>
