@@ -70,7 +70,7 @@ function ListagemRacas() {
                 className='btn btn-warning'
                 onClick={() => cadastrar()}
               >
-                Nova Raca
+                Nova Raça
               </button>
               <table className='table table-hover'>
                 <thead>

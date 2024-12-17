@@ -24,7 +24,7 @@ import CadastroProduto from './views/cadastro-produto';
 
 import ListagemProdutos from './views/listagem-produtos';
 
-import CadastroEstoque from './views/cadastro-estoque';
+import CadastroEstoques from './views/cadastro-estoques';
 
 import ListagemEstoques from './views/listagem-estoques';
 
@@ -69,8 +69,8 @@ function Rotas(props) {
                 <Route path='/cadastro-produto/:idParam?' element={<CadastroProduto />} />
                 <Route path='/listagem-produtos' element={<ListagemProdutos />} />
 
-                <Route path='/cadastro-produto/:idParam?' element={<CadastroEstoque />} />
-                <Route path='/listagem-produtos' element={<ListagemEstoques />} />
+                {/* <Route path='/cadastro-produto/:idParam?' element={<CadastroEstoque />} />
+                <Route path='/listagem-produtos' element={<ListagemEstoques />} /> */}
 
                 <Route path='/cadastro-produto/:idParam?' element={<CadastroCaixa />} />
                 <Route path='/listagem-produtos' element={<ListagemCaixas />} />
@@ -80,6 +80,9 @@ function Rotas(props) {
 
                 <Route path='/cadastro-pet/:idParam?' element={<CadastroPet/>} />
                 <Route path='/listagem-pets/' element={<ListagemPets/>} />
+
+                <Route path='/cadastro-estoques/:idParam?' element={<CadastroEstoques/>} />
+                <Route path='/listagem-estoques/' element={<ListagemEstoques/>} />
 
                 
                 <Route path='/cadastro-raca/:idParam?' element={<CadastroRaca/>} />
