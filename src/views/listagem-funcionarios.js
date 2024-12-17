@@ -93,6 +93,7 @@ function ListagemFuncionarios() {
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
+                      {/* <td>{dado.cargo}</td> */}
                       <td>{dado.cpf}</td>
                       <td>{dado.email}</td>
                       <td>{dado.celular}</td>
