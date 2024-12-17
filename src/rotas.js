@@ -44,6 +44,10 @@ import CadastroRaca from './views/cadastro-raca';
 
 import ListagemRacas from './views/listagem-racas';
 
+import CadastroServico from './views/cadastro-servico';
+
+import ListagemServicos from './views/listagem-servicos';
+
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function Rotas(props) {
@@ -84,6 +88,12 @@ function Rotas(props) {
                 
                 <Route path='/cadastro-raca/:idParam?' element={<CadastroRaca/>} />
                 <Route path='/listagem-racas/' element={<ListagemRacas/>} />
+
+                <Route path='/cadastro-servico/:idParam?' element={<CadastroServico/>} />
+                <Route path='/listagem-servicos/' element={<ListagemServicos/>} />
+
+                <Route path='/cadastro-agendamento/:idParam?' element={<CadastroAgendamento/>} />
+                <Route path='/listagem-agendamentos/' element={<ListagemAgendamentos/>} />
             </Routes>
         </BrowserRouter>
     );
