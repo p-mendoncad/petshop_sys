@@ -78,7 +78,7 @@ function Navbar(props) {
               label='Estoque'
             />
           </ul>
-          {/* <ul className='navbar-nav'>
+          <ul className='navbar-nav'>
             <NavbarItem
               render='true'
               href='/listagem-servicos'
@@ -91,7 +91,7 @@ function Navbar(props) {
               href='/listagem-agendamentos'
               label='Agendamentos'
             />
-          </ul> */}
+          </ul>
           <ul className='navbar-nav'>
             <NavbarItem
               render='true'
