@@ -24,7 +24,7 @@ import CadastroProduto from './views/cadastro-produto';
 
 import ListagemProdutos from './views/listagem-produtos';
 
-import CadastroEstoques from './views/cadastro-estoques';
+import CadastroEstoque from './views/cadastro-estoque';
 
 import ListagemEstoques from './views/listagem-estoques';
 

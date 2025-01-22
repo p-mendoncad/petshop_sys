@@ -51,7 +51,7 @@ function CadastroEstoque() {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
-          mensagemSucesso(`Agendamento ${servico} cadastrada com sucesso!`);
+          mensagemSucesso(`Setor ${setor} cadastrada com sucesso!`);
           navigate(`/listagem-estoques`);
         })
         .catch(function (error) {
@@ -63,7 +63,7 @@ function CadastroEstoque() {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
-          mensagemSucesso(`Agendamento ${servico} alterada com sucesso!`);
+          mensagemSucesso(`Setor ${setor} alterada com sucesso!`);
           navigate(`/listagem-estoques`);
         })
         .catch(function (error) {

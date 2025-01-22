@@ -51,7 +51,7 @@ function CadastroCargo() {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
-          mensagemSucesso(`Agendamento ${servico} cadastrada com sucesso!`);
+          mensagemSucesso(`Cargo ${nome} cadastrada com sucesso!`);
           navigate(`/listagem-cargos`);
         })
         .catch(function (error) {
@@ -63,7 +63,7 @@ function CadastroCargo() {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
-          mensagemSucesso(`Agendamento ${servico} alterada com sucesso!`);
+          mensagemSucesso(`Cargo ${nome} alterada com sucesso!`);
           navigate(`/listagem-cargos`);
         })
         .catch(function (error) {
