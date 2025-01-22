@@ -85,9 +85,8 @@ function Rotas(props) {
                 <Route path='/cadastro-pet/:idParam?' element={<CadastroPet/>} />
                 <Route path='/listagem-pets/' element={<ListagemPets/>} />
 
-                <Route path='/cadastro-estoques/:idParam?' element={<CadastroEstoques/>} />
+                <Route path='/cadastro-estoque/:idParam?' element={<CadastroEstoque/>} />
                 <Route path='/listagem-estoques/' element={<ListagemEstoques/>} />
-
                 
                 <Route path='/cadastro-raca/:idParam?' element={<CadastroRaca/>} />
                 <Route path='/listagem-racas/' element={<ListagemRacas/>} />
