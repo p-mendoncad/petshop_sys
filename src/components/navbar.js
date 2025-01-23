@@ -54,7 +54,7 @@ function Navbar(props) {
             <NavbarItem
               render='true'
               href='/listagem-funcionarios'
-              label='Funcionarios'
+              label='Funcionários'
             />
           </ul>       
           <ul className='navbar-nav'>
