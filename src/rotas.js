@@ -24,7 +24,7 @@ import CadastroProduto from './views/cadastro-produto';
 
 import ListagemProdutos from './views/listagem-produtos';
 
-import CadastroEstoques from './views/cadastro-estoques';
+import CadastroEstoque from './views/cadastro-estoque';
 
 import ListagemEstoques from './views/listagem-estoques';
 
@@ -44,13 +44,17 @@ import CadastroRaca from './views/cadastro-raca';
 
 import ListagemRacas from './views/listagem-racas';
 
+import CadastroServico from './views/cadastro-servico';
+
+import ListagemServicos from './views/listagem-servicos';
+
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function Rotas(props) {
     return (
         <BrowserRouter>
             <Routes>
-
+        {/* adicionar declaração de parâmetro */}
                 <Route path='/cadastro-cargo/:idParam?' element={<CadastroCargo />} />
                 <Route path='/listagem-cargos' element={<ListagemCargos />} />
                 
@@ -58,10 +62,10 @@ function Rotas(props) {
                 <Route path='/listagem-clientes' element={<ListagemClientes />} />
                 
                 <Route path='/cadastro-agendamento/:idParam?' element={<CadastroAgendamento />} />
-                <Route path='/listagem-agendamentos' element={<ListagemAgendamentos />} />
+                <Route path='/listagem-agendamentos/:idParam?' element={<ListagemAgendamentos />} />
                 
                 <Route path='/cadastro-funcionario/:idParam?' element={<CadastroFuncionario />} />
-                <Route path='/listagem-funcionarios' element={<ListagemFuncionarios />} />
+                <Route path='/listagem-funcionarios/:idParam?' element={<ListagemFuncionarios />} />
                 
                 <Route path='/cadastro-fornecedor/:idParam?' element={<CadastroFornecedor />} />
                 <Route path='/listagem-fornecedores' element={<ListagemFornecedores />} />
@@ -81,12 +85,17 @@ function Rotas(props) {
                 <Route path='/cadastro-pet/:idParam?' element={<CadastroPet/>} />
                 <Route path='/listagem-pets/' element={<ListagemPets/>} />
 
-                <Route path='/cadastro-estoques/:idParam?' element={<CadastroEstoques/>} />
+                <Route path='/cadastro-estoque/:idParam?' element={<CadastroEstoque/>} />
                 <Route path='/listagem-estoques/' element={<ListagemEstoques/>} />
-
                 
                 <Route path='/cadastro-raca/:idParam?' element={<CadastroRaca/>} />
                 <Route path='/listagem-racas/' element={<ListagemRacas/>} />
+
+                <Route path='/cadastro-servico/:idParam?' element={<CadastroServico/>} />
+                <Route path='/listagem-servicos/' element={<ListagemServicos/>} />
+
+                <Route path='/cadastro-agendamento/:idParam?' element={<CadastroAgendamento/>} />
+                <Route path='/listagem-agendamentos/' element={<ListagemAgendamentos/>} />
             </Routes>
         </BrowserRouter>
     );

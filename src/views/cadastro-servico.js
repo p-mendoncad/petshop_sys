@@ -9,32 +9,34 @@ import FormGroup from '../components/form-group';
 import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 // import '../custom.css';
-
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
 
-function CadastroCargo() {
+function CadastroServico() {
   const { idParam } = useParams();
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/Cargo`;
+  const baseURL = `${BASE_URL}/Servico`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
-  const [salario, setSalario] = useState(0);
+  const [duracao, setDuracao] = useState('');
+  const [preco, setPreco] = useState('');
 
-  const [dados, setDados] = React.useState([]);
+  const [dados, setDados] = useState([]);
 
   function inicializar() {
     if (idParam == null) {
       setId('');
       setNome('');
-      setSalario('');
+      setDuracao('');
+      setPreco('');
     } else {
       setId(dados.id);
       setNome(dados.nome);
-      setSalario(dados.salario);
+      setDuracao(dados.duracao);
+      setPreco(dados.preco);
     }
   }
 
@@ -42,7 +44,8 @@ function CadastroCargo() {
     let data = {
       id,
       nome,
-      salario
+      duracao,
+      preco,
     };
     data = JSON.stringify(data);
     if (idParam == null) {
@@ -50,11 +53,11 @@ function CadastroCargo() {
         .post(baseURL, data, {
           headers: { 'Content-Type': 'application/json' },
         })
-        .then(function (response) {
-          mensagemSucesso(`Cargo ${nome} cadastrada com sucesso!`);
-          navigate(`/listagem-cargos`);
+        .then((response) => {
+          mensagemSucesso(`Serviço ${nome} cadastrado com sucesso!`);
+          navigate(`/listagem-servicos`);
         })
-        .catch(function (error) {
+        .catch((error) => {
           mensagemErro(error.response.data);
         });
     } else {
@@ -62,23 +65,26 @@ function CadastroCargo() {
         .put(`${baseURL}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
-        .then(function (response) {
-          mensagemSucesso(`Cargo ${nome} alterada com sucesso!`);
-          navigate(`/listagem-cargos`);
+        .then((response) => {
+          mensagemSucesso(`Serviço ${nome} alterado com sucesso!`);
+          navigate(`/listagem-servicos`);
         })
-        .catch(function (error) {
+        .catch((error) => {
           mensagemErro(error.response.data);
         });
     }
   }
 
   async function buscar() {
-    await axios.get(`${baseURL}/${idParam}`).then((response) => {
-      setDados(response.data);
-    });
-    setId(dados.id);
-    setNome(dados.nome);
-    setSalario(dados.salario);
+    if (idParam) {
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+        setDados(response.data);
+      });
+      setId(dados.id);
+      setNome(dados.nome);
+      setDuracao(dados.duracao);
+      setPreco(dados.preco);
+    }
   }
 
   useEffect(() => {
@@ -89,31 +95,38 @@ function CadastroCargo() {
 
   return (
     <div className='container'>
-      <Card title='Cadastro de Cargos'>
+      <Card title='Cadastro de Serviços'>
         <div className='row'>
           <div className='col-lg-12'>
             <div className='bs-component'>
-              <FormGroup label='Nome: *' htmlFor='inputNome'>
+              <FormGroup label='Nome do Serviço: *' htmlFor='inputNome'>
                 <input
                   type='text'
                   id='inputNome'
-                  value={servico}
+                  value={nome}
                   className='form-control'
                   name='nome'
                   onChange={(e) => setNome(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup
-                label='Salário: *'
-                htmlFor='inputSalario'
-              >
+              <FormGroup label='Duração (em minutos): *' htmlFor='inputDuracao'>
                 <input
-                  type='text'
-                  id='inputSalario'
-                  value={data}
+                  type='number'
+                  id='inputDuracao'
+                  value={duracao}
                   className='form-control'
-                  name='salario'
-                  onChange={(e) => setSalario(e.target.value)}
+                  name='duracao'
+                  onChange={(e) => setDuracao(e.target.value)}
+                />
+              </FormGroup>
+              <FormGroup label='Preço (R$): *' htmlFor='inputPreco'>
+                <input
+                  type='number'
+                  id='inputPreco'
+                  value={preco}
+                  className='form-control'
+                  name='preco'
+                  onChange={(e) => setPreco(e.target.value)}
                 />
               </FormGroup>
               <Stack spacing={1} padding={1} direction='row'>
@@ -140,4 +153,4 @@ function CadastroCargo() {
   );
 }
 
-export default CadastroCargo;
+export default CadastroServico;
