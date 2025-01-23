@@ -100,7 +100,7 @@ function CadastroRaca() {
         <div className='row'>
           <div className='col-lg-12'>
             <div className='bs-component'>
-              <FormGroup label='Animal (G - Gato, C - Cachorro): *' htmlFor='inputAnimal'>
+              <FormGroup label='Animal: *' htmlFor='inputAnimal'>
                 <input
                   type='text'
                   id='inputAnimal'

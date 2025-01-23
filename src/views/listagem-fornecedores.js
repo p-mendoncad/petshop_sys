@@ -21,11 +21,11 @@ function ListagemFornecedores() {
   const navigate = useNavigate();
 
   const cadastrar = () => {
-    navigate(`/cadastro-fornecedores`);
+    navigate(`/cadastro-fornecedor`);
   };
 
   const editar = (id) => {
-    navigate(`/cadastro-fornecedores/${id}`);
+    navigate(`/cadastro-fornecedor/${id}`);
   };
 
   const [dados, setDados] = React.useState(null);

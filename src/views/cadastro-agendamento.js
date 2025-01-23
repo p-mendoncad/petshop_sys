@@ -68,7 +68,7 @@ function CadastroAgendamento() {
         })
         .then(function (response) {
           mensagemSucesso(`Agendamento ${servico} cadastrada com sucesso!`);
-          navigate(`/listagem-Agendamentos`);
+          navigate(`/listagem-agendamentos`);
         })
         .catch(function (error) {
           mensagemErro(error.response.data);
@@ -80,7 +80,7 @@ function CadastroAgendamento() {
         })
         .then(function (response) {
           mensagemSucesso(`Agendamento ${servico} alterada com sucesso!`);
-          navigate(`/listagem-Agendamentos`);
+          navigate(`/listagem-agendamentos`);
         })
         .catch(function (error) {
           mensagemErro(error.response.data);
@@ -89,6 +89,7 @@ function CadastroAgendamento() {
   }
 
   async function buscar() {
+    if(idParam){
     await axios.get(`${baseURL}/${idParam}`).then((response) => {
       setDados(response.data);
     });
@@ -100,6 +101,7 @@ function CadastroAgendamento() {
       setServico(dados.servico);
       setPet(dados.pet);
   }
+}
 
   useEffect(() => {
     buscar(); // eslint-disable-next-line

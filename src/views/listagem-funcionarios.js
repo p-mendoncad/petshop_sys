@@ -21,11 +21,11 @@ function ListagemFuncionarios() {
   const navigate = useNavigate();
 
   const cadastrar = () => {
-    navigate(`/cadastro-funcionarios`);
+    navigate(`/cadastro-funcionario`);
   };
 
   const editar = (id) => {
-    navigate(`/cadastro-funcionarios/${id}`);
+    navigate(`/cadastro-funcionario/${id}`);
   };
 
   const [dados, setDados] = React.useState(null);

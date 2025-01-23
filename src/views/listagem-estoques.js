@@ -21,11 +21,11 @@ function ListagemEstoques() {
   const navigate = useNavigate();
 
   const cadastrar = () => {
-    navigate(`/cadastro-estoques`);
+    navigate(`/cadastro-estoque`);
   };
 
   const editar = (id) => {
-    navigate(`/cadastro-estoques/${id}`);
+    navigate(`/cadastro-estoque/${id}`);
   };
 
   const [dados, setDados] = React.useState(null);

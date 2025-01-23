@@ -18,7 +18,7 @@ function CadastroCargo() {
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/Cargo`;
+  const baseURL = `${BASE_URL}/Cargos`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -30,7 +30,7 @@ function CadastroCargo() {
     if (idParam == null) {
       setId('');
       setNome('');
-      setSalario('');
+      setSalario(0);
     } else {
       setId(dados.id);
       setNome(dados.nome);
@@ -97,7 +97,7 @@ function CadastroCargo() {
                 <input
                   type='text'
                   id='inputNome'
-                  value={servico}
+                  value={nome}
                   className='form-control'
                   name='nome'
                   onChange={(e) => setNome(e.target.value)}
@@ -110,7 +110,7 @@ function CadastroCargo() {
                 <input
                   type='text'
                   id='inputSalario'
-                  value={data}
+                  value={salario}
                   className='form-control'
                   name='salario'
                   onChange={(e) => setSalario(e.target.value)}

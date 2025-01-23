@@ -21,11 +21,11 @@ function ListagemCargos() {
   const navigate = useNavigate();
 
   const cadastrar = () => {
-    navigate(`/cadastro-cargos`);
+    navigate(`/cadastro-cargo`);
   };
 
   const editar = (id) => {
-    navigate(`/cadastro-cargos/${id}`);
+    navigate(`/cadastro-cargo/${id}`);
   };
 
   const [dados, setDados] = React.useState(null);

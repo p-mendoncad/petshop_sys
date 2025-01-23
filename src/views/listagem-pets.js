@@ -21,11 +21,11 @@ function ListagemPets() {
   const navigate = useNavigate();
 
   const cadastrar = () => {
-    navigate(`/cadastro-pets`);
+    navigate(`/cadastro-pet`);
   };
 
   const editar = (id) => {
-    navigate(`/cadastro-pets/${id}`);
+    navigate(`/cadastro-pet/${id}`);
   };
 
   const [dados, setDados] = React.useState(null);
