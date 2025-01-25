@@ -12,6 +12,7 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
+import { BASE_URL3 } from '../config/axios';
 
 function CadastroAgendamento() {
   const { idParam } = useParams();
@@ -26,7 +27,7 @@ function CadastroAgendamento() {
   const [horaEntrada, setHoraEntrada] = useState('');
   const [horaSaida, setHoraSaida] = useState('');
   const [servico, setServico] = useState('');
-  const [pet, setPet] = useState(0);
+  const [pet, setPet] = useState('');
 
   const [dados, setDados] = React.useState([]);
 
@@ -49,11 +50,11 @@ function CadastroAgendamento() {
       setPet(dados.pet);
     }
   }
-
+  const [dataAgendamento, setDataAgendamento] = useState('');
   async function salvar() {
     let data = {
       id,
-      data,
+      data: dataAgendamento,
       horario,
       horaEntrada,
       horaSaida,
@@ -89,22 +90,42 @@ function CadastroAgendamento() {
   }
 
   async function buscar() {
-    if(idParam){
-    await axios.get(`${baseURL}/${idParam}`).then((response) => {
-      setDados(response.data);
-    });
+    if (idParam != 0) {
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+        setDados(response.data);
+      });
       setId(dados.id);
       setData(dados.data);
       setHorario(dados.horario);
       setHoraEntrada(dados.horaEntrada);
       setHoraSaida(dados.horaSaida);
-      setServico(dados.servico);
-      setPet(dados.pet);
+      // setServico(dados.servico);
+      // setPet(dados.pet);
+    }
   }
-}
+
+  async function buscarPets() {
+    if (idParam != 0) {
+      await axios.get(`${BASE_URL3}/pets`).then((response) => {
+        setDados(response.data);
+      });
+      setPet(dados.pet);
+    }
+  }
+  async function buscarServicos() {
+    if (idParam != 0) {
+      await axios.get(`${BASE_URL3}/servicos`).then((response) => {
+        setDados(response.data);
+      });
+      setServico(dados.servico);
+    }
+  }
+
 
   useEffect(() => {
-    buscar(); // eslint-disable-next-line
+    buscar();
+    buscarPets();
+    buscarServicos();
   }, [id]);
 
   if (!dados) return null;
@@ -115,27 +136,42 @@ function CadastroAgendamento() {
         <div className='row'>
           <div className='col-lg-12'>
             <div className='bs-component'>
-              <FormGroup label='Serviço: *' htmlFor='inputServico'>
-                <input
-                  type='text'
-                  id='inputServico'
-                  value={servico}
-                  className='form-control'
+              <FormGroup label='Serviço: *' htmlFor='selectServico'>
+                <select
+                  className='form-select'
+                  id='selectServico'
                   name='servico'
-                  onChange={(e) => setServico(e.target.value)}
-                />
+                  value={servico}
+                  onChange={(e) => setServico(e.target.value)}  // Use 'setServico' aqui
+                >
+                  <option key='0' value='0'>
+                    Selecione um serviço
+                  </option>
+                  {dados && dados.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                      {dado.nome}
+                    </option>
+                  ))}
+                </select>
               </FormGroup>
-              <FormGroup
-                label='Data: *'
-                htmlFor='inputData'
-              >
+              {/* <FormGroup label='Serviço: *' htmlFor='inputServico'>
+                  <input
+                    type='text'
+                    id='inputServico'
+                    value={servico}
+                    className='form-control'
+                    name='servico'
+                    onChange={(e) => setServico(e.target.value)}
+                  />
+                </FormGroup> */}
+              <FormGroup label='Data: *' htmlFor='inputData'>
                 <input
                   type='text'
                   id='inputData'
-                  value={data}
+                  value={dataAgendamento}  // Use 'dataAgendamento' aqui
                   className='form-control'
                   name='data'
-                  onChange={(e) => setData(e.target.value)}
+                  onChange={(e) => setDataAgendamento(e.target.value)}  // Use 'setDataAgendamento'
                 />
               </FormGroup>
               <FormGroup
@@ -151,45 +187,60 @@ function CadastroAgendamento() {
                   onChange={(e) => setHorario(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup
-                label='Pet: *'
-                htmlFor='inputPet'
-              >
-                <input
-                  type='text'
-                  id='inputPet'
-                  value={pet}
-                  className='form-control'
+              <FormGroup label='Pet: *' htmlFor='selectPet'>
+                <select
+                  className='form-select'
+                  id='selectPet'
                   name='pet'
-                  onChange={(e) => setPet(e.target.value)}
-                />
+                  value={pet}
+                  onChange={(e) => setPet(e.target.value)}  // Isso está correto
+                >
+                  <option key='0' value='0'>
+                    Selecione um pet
+                  </option>
+                  {dados && dados.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                      {dado.nome}
+                    </option>
+                  ))}
+                </select>
               </FormGroup>
-              <FormGroup
-                label='Hora de entrada: *'
-                htmlFor='inputHoraEntrada'
-              >
+
+              {/* <FormGroup
+                  label='Pet: *'
+                  htmlFor='inputPet'
+                >
+                  <input
+                    type='text'
+                    id='inputPet'
+                    value={pet}
+                    className='form-control'
+                    name='pet'
+                    onChange={(e) => setPet(e.target.value)}
+                  />
+                </FormGroup> */}
+              <FormGroup label='Hora de entrada: *' htmlFor='inputHoraEntrada'>
                 <input
                   type='text'
                   id='inputHoraEntrada'
                   value={horaEntrada}
                   className='form-control'
                   name='horaEntrada'
-                  onChange={(e) => setData(e.target.value)}
+                  onChange={(e) => setHoraEntrada(e.target.value)}  // Corrigido para 'setHoraEntrada'
                 />
               </FormGroup>
-              <FormGroup
-                label='Hora de saída: *'
-                htmlFor='inputHoraSaida'
-              >
+
+              <FormGroup label='Hora de saída: *' htmlFor='inputHoraSaida'>
                 <input
                   type='text'
                   id='inputHoraSaida'
                   value={horaSaida}
                   className='form-control'
                   name='horaSaida'
-                  onChange={(e) => setData(e.target.value)}
+                  onChange={(e) => setHoraSaida(e.target.value)}  // Corrigido para 'setHoraSaida'
                 />
               </FormGroup>
+
 
               <Stack spacing={1} padding={1} direction='row'>
                 <button
