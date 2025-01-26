@@ -70,7 +70,7 @@ function ListagemAgendamentos() {
                 className='btn btn-warning'
                 onClick={() => cadastrar()}
               >
-                Nova Raca
+                Novo Agendamento
               </button>
               <table className='table table-hover'>
                 <thead>
