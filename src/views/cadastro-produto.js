@@ -13,7 +13,7 @@ import { BASE_URL } from '../config/axios';
 function CadastroProduto() {
   const { idParam } = useParams();
   const navigate = useNavigate();
-  const baseURL = `${BASE_URL}/Produto`;
+  const baseURL = `${BASE_URL}/Produtos`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -69,7 +69,7 @@ function CadastroProduto() {
   }
 
   async function buscarProduto() {
-    if (idParam) {
+    if (idParam != null) {
       try {
         const response = await axios.get(`${baseURL}/${idParam}`);
         const produto = response.data;
@@ -95,6 +95,21 @@ function CadastroProduto() {
       }
     }
   }
+
+  const [dadosFornecedores, setDadosFornecedores] = React.useState(null);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/fornecedores`).then((response) => {
+      setDadosFornecedores(response.data);
+    });
+  }, []);
+  const [dadosEstoques, setDadosEstoques] = React.useState(null);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/estoques`).then((response) => {
+      setDadosEstoques(response.data);
+    });
+  }, []);
 
   useEffect(() => {
     buscarProduto();
@@ -243,27 +258,42 @@ function CadastroProduto() {
                   onChange={(e) => setCodBarras(e.target.value)}
                 />
               </FormGroup>
-
-              <FormGroup label='ID do Fornecedor:' htmlFor='inputIdFornecedor'>
-                <input
-                  type='number'
-                  id='inputIdFornecedor'
+              <FormGroup label='Fornecedor: *' htmlFor='selectFornecedor'>
+                <select
+                  className='form-select'
+                  id='selectFornecedor'
+                  name='fornecedor'
                   value={idFornecedor}
-                  className='form-control'
-                  onChange={(e) => setIdFornecedor(e.target.value)}
-                />
+                  onChange={(e) => setDadosFornecedores(e.target.value)}  // Use 'setServico' aqui
+                >
+                  <option key='0' value='0'>
+                    Selecione um fornecedor
+                  </option>
+                  {dadosFornecedores && dadosFornecedores.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                      {dado.nome}
+                    </option>
+                  ))}
+                </select>
               </FormGroup>
-
-              <FormGroup label='ID do Setor:' htmlFor='inputIdSetor'>
-                <input
-                  type='number'
-                  id='inputIdSetor'
+              <FormGroup label='Setor: *' htmlFor='selectSetor'>
+                <select
+                  className='form-select'
+                  id='selectSetor'
+                  name='setor'
                   value={idSetor}
-                  className='form-control'
-                  onChange={(e) => setIdSetor(e.target.value)}
-                />
+                  onChange={(e) => setDadosEstoques(e.target.value)}  // Use 'setServico' aqui
+                >
+                  <option key='0' value='0'>
+                    Selecione um setor
+                  </option>
+                  {dadosEstoques && dadosEstoques.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                      {dado.descricao}
+                    </option>
+                  ))}
+                </select>
               </FormGroup>
-
               <Stack spacing={2} direction='row'>
                 <button onClick={salvar} className='btn btn-success'>
                   Salvar

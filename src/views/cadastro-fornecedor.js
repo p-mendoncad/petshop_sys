@@ -18,7 +18,7 @@ function CadastroFornecedor() {
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/Fornecedor`;
+  const baseURL = `${BASE_URL}/Fornecedores`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -117,7 +117,7 @@ function CadastroFornecedor() {
   }
 
   async function buscar() {
-    if (idParam) {
+    if (idParam != null) {
       await axios.get(`${baseURL}/${idParam}`).then((response) => {
         setDados(response.data);
       });

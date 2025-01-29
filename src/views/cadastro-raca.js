@@ -12,6 +12,7 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
+import { BASE_URL3 } from '../config/axios';
 
 function CadastroRaca() {
   const { idParam } = useParams();
@@ -19,6 +20,7 @@ function CadastroRaca() {
   const navigate = useNavigate();
 
   const baseURL = `${BASE_URL}/Raca`;
+  const baseURL3 = `${BASE_URL3}/racas`;
 
   const [id, setId] = useState('');
   const [animal, setAnimal] = useState('');
@@ -77,8 +79,8 @@ function CadastroRaca() {
   }
 
   async function buscar() {
-    if (idParam) {
-      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+    if (idParam != null) {
+      await axios.get(`${baseURL3}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);

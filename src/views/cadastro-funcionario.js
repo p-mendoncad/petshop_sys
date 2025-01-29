@@ -12,13 +12,15 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
+import { BASE_URL2 } from '../config/axios';
 
 function CadastroFuncionario() {
   const { idParam } = useParams();
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/funcionario`;
+  const baseURL = `${BASE_URL}/funcionarios`;
+  const baseURL2 = `${BASE_URL2}/funcionarios`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -107,7 +109,7 @@ function CadastroFuncionario() {
         });
     } else {
       await axios
-        .put(`${baseURL}/${idParam}`, data, {
+        .put(`${baseURL2}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -121,8 +123,8 @@ function CadastroFuncionario() {
   }
 
   async function buscar() {
-    if (idParam) {
-      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+    if (idParam != null) {
+      await axios.get(`${baseURL2}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);
@@ -143,8 +145,16 @@ function CadastroFuncionario() {
     }
   }
 
+  const [dadosCargos, setDadosCargos] = React.useState(null);
+
   useEffect(() => {
-    buscar(); // eslint-disable-next-line
+    axios.get(`${BASE_URL}/cargos`).then((response) => {
+      setDadosCargos(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    buscar(); 
   }, [id]);
 
   if (!dados) return null;
@@ -275,25 +285,23 @@ function CadastroFuncionario() {
                   onChange={(e) => setCep(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Cargo ID: *' htmlFor='inputCargoId'>
-                <input
-                  type='text'
-                  id='inputCargoId'
+              <FormGroup label='Cargos: *' htmlFor='selectCargos'>
+                <select
+                  className='form-select'
+                  id='selectCargos'
+                  name='Cargos'
                   value={cargoId}
-                  className='form-control'
-                  name='cargoId'
-                  onChange={(e) => setCargoId(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup label='Cargo: *' htmlFor='inputCargo'>
-                <input
-                  type='text'
-                  id='inputCargo'
-                  value={cargo}
-                  className='form-control'
-                  name='cargo'
-                  onChange={(e) => setCargo(e.target.value)}
-                />
+                  onChange={(e) => setCargo(e.target.value)}  
+                >
+                  <option key='0' value='0'>
+                    Selecione um cargo
+                  </option>
+                  {dadosCargos && dadosCargos.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                      {dado.nome}
+                    </option>
+                  ))}
+                </select>
               </FormGroup>
               <Stack spacing={1} padding={1} direction='row'>
                 <button
