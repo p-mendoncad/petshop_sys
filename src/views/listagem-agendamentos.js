@@ -102,7 +102,7 @@ function ListagemAgendamentos() {
                           </IconButton>
                           <IconButton
                             aria-label='delete'
-                           // onClick={() => excluir(dado.id)}
+                            onClick={() => excluir(dado.id)}
                           >
                             <DeleteIcon />
                           </IconButton>

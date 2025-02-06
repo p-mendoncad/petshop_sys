@@ -11,16 +11,13 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 // import '../custom.css';
 
 import axios from 'axios';
-import { BASE_URL } from '../config/axios';
 import { BASE_URL2 } from '../config/axios';
 import { BASE_URL3 } from '../config/axios';
 
 function CadastroPet() {
   const { idParam } = useParams();
   const navigate = useNavigate();
-  const baseURL = `${BASE_URL}/Pet`;
   const baseURL3 = `${BASE_URL3}/pets`;
-  const baseURL2 = `${BASE_URL2}/clientes`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -32,7 +29,7 @@ function CadastroPet() {
   const [animal, setAnimal] = useState('');
   const [nomeRaca, setNomeRaca] = useState('');
   const [racaId, setRacaId] = useState('');
-  const [cliente, setCliente] = useState('');
+  const [nomeCliente, setNomeCliente] = useState('');
   const [clienteId, setClienteId] = useState('');
 
   const [dados, setDados] = useState([]);
@@ -49,7 +46,7 @@ function CadastroPet() {
       setAnimal('');
       setNomeRaca('');
       setRacaId('');
-      setCliente('');
+      setNomeCliente('');
       setClienteId('');
     } else {
       setId(dados.id);
@@ -62,8 +59,9 @@ function CadastroPet() {
       setAnimal(dados.animal);
       setNomeRaca(dados.nomeRaca);
       setRacaId(dados.racaId);
-      setCliente(dados.cliente);
+      setNomeCliente(dados.nomeCliente);
       setClienteId(dados.clienteId);
+
     }
   }
 
@@ -79,7 +77,7 @@ function CadastroPet() {
       animal,
       nomeRaca,
       racaId,
-      cliente,
+      nomeCliente,
       clienteId,
     };
     data = JSON.stringify(data);
@@ -125,8 +123,11 @@ function CadastroPet() {
       setAnimal(dados.animal);
       setNomeRaca(dados.nomeRaca);
       setRacaId(dados.racaId);
-      setCliente(dados.cliente);
+      setNomeCliente(dados.nomeCliente);
       setClienteId(dados.clienteId);
+      console.log(dados.nome);
+      // console.log(dados.racaId); 
+      console.log(dados.nomeCliente);
     }
   }
 
@@ -256,9 +257,9 @@ function CadastroPet() {
                 <select
                   className='form-select'
                   id='selectCliente'
-                  name='cliente'
+                  name='nomeCliente'
                   value={clienteId}
-                  onChange={(e) => setCliente(e.target.value)}
+                  onChange={(e) => setNomeCliente(e.target.value)}
                 >
                   <option key='0' value='0'>
                     Selecione um cliente
