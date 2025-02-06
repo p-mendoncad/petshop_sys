@@ -2,11 +2,13 @@ import React from 'react';
 import 'bootswatch/dist/minty/bootstrap.css';
 
 import NavbarItem from './navbarItem';
+import logo from '../images/logo.png';
 
 function Navbar(props) {
   return (
     <div className='navbar navbar-expand-lg fixed-top navbar-dark bg-primary'>
       <div className='container'>
+        <img src={logo} alt="logo" className="img-fluid me-3"/>
         <a href='/' className='navbar-brand'>
           PSS
         </a>
@@ -69,6 +71,13 @@ function Navbar(props) {
               render='true'
               href='/listagem-produtos'
               label='Produtos'
+            />
+          </ul>
+          <ul className='navbar-nav'>
+            <NavbarItem
+              render='true'
+              href='/listagem-compras'
+              label='Compras'
             />
           </ul>
           <ul className='navbar-nav'>

@@ -17,15 +17,15 @@ import { BASE_URL } from '../config/axios';
 
 const baseURL = `${BASE_URL}/produtos`;
 
-function ListagemProdutos() {
+function ListagemCompras() {
   const navigate = useNavigate();
 
   const cadastrar = () => {
-    navigate(`/cadastro-produto`);
+    navigate(`/cadastro-compra`);
   };
 
   const editar = (id) => {
-    navigate(`/cadastro-produto/${id}`);
+    navigate(`/cadastro-compra/${id}`);
   };
 
   const [dados, setDados] = React.useState(null);
@@ -39,7 +39,7 @@ function ListagemProdutos() {
   //       headers: { 'Content-Type': 'application/json' },
   //     })
   //     .then(function (response) {
-  //       mensagemSucesso(`Produto excluído com sucesso!`);
+  //       mensagemSucesso(`Compra excluído com sucesso!`);
   //       setDados(
   //         dados.filter((dado) => {
   //           return dado.id !== id;
@@ -47,7 +47,7 @@ function ListagemProdutos() {
   //       );
   //     })
   //     .catch(function (error) {
-  //       mensagemErro(`Erro ao excluir o produto`);
+  //       mensagemErro(`Erro ao excluir a compra`);
   //     });
   // }
 
@@ -61,7 +61,7 @@ function ListagemProdutos() {
 
   return (
     <div className='container'>
-      <Card title='Listagem de Produtos'>
+      <Card title='Listagem de Compras'>
         <div className='row'>
           <div className='col-lg-12'>
             <div className='bs-component'>
@@ -70,43 +70,28 @@ function ListagemProdutos() {
                 className='btn btn-warning'
                 onClick={() => cadastrar()}
               >
-                Novo Produto
+                Nova Compra
               </button>
               <table className='table table-hover'>
                 <thead>
                   <tr>
-                    <th scope='col'>Nome</th>
-                    <th scope='col'>Preço</th>
+                    <th scope='col'>Produto</th>
+                    <th scope='col'>Lote</th>
                     <th scope='col'>Quantidade</th>
-                    <th scope='col'>Descrição</th>
-                    <th scope='col'>Qtd. Mínima</th>
-                    {/* <th scope='col'>Qtd. Máxima</th> */}
-                    {/* <th scope='col'>Lote</th> */}
-                    {/* <th scope='col'>Vencimento</th> */}
-                    {/* <th scope='col'>Perecibilidade</th> */}
-                    {/* <th scope='col'>Entrada</th> */}
-                    {/* <th scope='col'>Uni. Medida</th> */}
-                    {/* <th scope='col'>Preço de Compra</th> */}
-                    {/* <th scope='col'>Cód. Barras</th> */}
-                    {/* <th scope='col'>Fornecedor</th> */}
-                    <th scope='col'>Setor</th>
-
-                    
-
+                    <th scope='col'>Vencimento</th>
+                    <th scope='col'>Entrada</th>
+                    <th scope='col'>Valor Unitário</th>
                   </tr>
                 </thead>
                 <tbody>
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.precoVenda}</td>
+                      <td>{dado.lote}</td>
                       <td>{dado.quantidade}</td>
-                      <td>{dado.descricao}</td>
-                      <td>{dado.quantMin}</td>
-                       {/*<td>{dado.vencimento}</td>
+                      <td>{dado.vencimento}</td>
                       <td>{dado.dataEntrada}</td>
-                      <td>{dado.precoCompra}</td> */}
-                      <td>{dado.idSetor}</td>
+                      <td>{dado.precoCompra}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton
@@ -135,4 +120,4 @@ function ListagemProdutos() {
   );
 }
 
-export default ListagemProdutos;
+export default ListagemCompras;
