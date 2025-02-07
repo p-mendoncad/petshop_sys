@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { data, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Stack from '@mui/material/Stack';
 
@@ -73,13 +73,14 @@ function CadastroCargo() {
   }
 
   async function buscar() {
-    await axios.get(`${baseURL}/${idParam}`).then((response) => {
-      setDados(response.data);
-    });
+    if (idParam) {
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+        setDados(response.data);
+      });
     setId(dados.id);
     setNome(dados.nome);
     setSalario(dados.salario);
-  }
+  }}
 
   useEffect(() => {
     buscar(); // eslint-disable-next-line
