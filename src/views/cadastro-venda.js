@@ -16,6 +16,10 @@ import { BASE_URL } from '../config/axios';
 function CadastroVenda() {
   const { idParam } = useParams();
 
+  const editar = (id) => {
+    navigate(`/cadastro-venda/${id}`);
+  };
+
   const navigate = useNavigate();
 
   const baseURL = `${BASE_URL}/Venda`;
@@ -189,7 +193,7 @@ function CadastroVenda() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-vendas')}
                   type='button'
                   className='btn btn-danger'
                 >

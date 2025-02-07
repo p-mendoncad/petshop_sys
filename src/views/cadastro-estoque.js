@@ -127,7 +127,7 @@ function CadastroEstoque() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-estoques')}
                   type='button'
                   className='btn btn-danger'
                 >

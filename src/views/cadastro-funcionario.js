@@ -312,7 +312,7 @@ function CadastroFuncionario() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-funcionarios')}
                   type='button'
                   className='btn btn-danger'
                 >

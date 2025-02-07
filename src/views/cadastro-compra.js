@@ -208,7 +208,7 @@ function CadastroProduto() {
               </FormGroup>
         
 
-              <Stack spacing={2} direction='row'>
+              <Stack spacing={1} padding={1} direction='row'>
                 <button onClick={salvar} className='btn btn-success'>
                   Salvar
                 </button>

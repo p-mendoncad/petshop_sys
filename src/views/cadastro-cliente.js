@@ -90,9 +90,8 @@ function CadastroCliente() {
       fidelidade,
     };
     data = JSON.stringify(data);
-    if (idParam == null) {
-      await axios
-        .post(baseURL, data, {
+    if (!idParam == null) {
+      await axios.post(baseURL, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -282,18 +281,13 @@ function CadastroCliente() {
                 />
               </FormGroup>
               <Stack spacing={1} padding={1} direction='row'>
-                <button
-                  onClick={salvar}
-                  type='button'
-                  className='btn btn-success'
-                >
+                <button onClick={salvar} className='btn btn-success'>
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
-                  type='button'
+                  onClick={() => navigate('/listagem-clientes')}
                   className='btn btn-danger'
-                >
+                  >
                   Cancelar
                 </button>
               </Stack>

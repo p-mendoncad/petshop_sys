@@ -79,12 +79,6 @@ function ListagemVendas() {
                         <th scope='col'>Quantidade</th>
                         <th scope='col'>Valor Unitário</th>
                         <th scope='col'>Valor Total</th>
-                        {/* <th scope='col'>Logradouro</th>
-                        <th scope='col'>Número</th>
-                        <th scope='col'>Complemento</th>
-                        <th scope='col'>Bairro</th>
-                        <th scope='col'>Cidade</th>
-                        <th scope='col'>Estado</th> */}
                         <th scope='col'>Forma de Pagamento</th>
                         {/* <th scope='col'>Data de Cadastro</th> */}
                         <th scope='col'>CPF do Cliente</th>
@@ -97,12 +91,6 @@ function ListagemVendas() {
                       <td>{dado.quantidade}</td>
                       <td>{dado.valorUnitario}</td>
                       <td>{dado.valorTotal}</td>
-                      {/* <td>{dado.logradouro}</td>
-                      <td>{dado.numero}</td>
-                      <td>{dado.complemento}</td>
-                      <td>{dado.bairro}</td>
-                      <td>{dado.cidade}</td>
-                      <td>{dado.estado}</td> */}
                       <td>{dado.formaPagamento}</td>
                       {/* <td>{dado.dataCadastro}</td> */}
                       <td>{dado.cpfCliente}</td>

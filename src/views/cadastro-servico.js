@@ -138,7 +138,7 @@ function CadastroServico() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-servicos')}
                   type='button'
                   className='btn btn-danger'
                 >

@@ -141,7 +141,7 @@ function CadastroRaca() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-racas')}
                   type='button'
                   className='btn btn-danger'
                 >

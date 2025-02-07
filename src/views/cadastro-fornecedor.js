@@ -310,7 +310,7 @@
                     Salvar
                   </button>
                   <button
-                    onClick={inicializar}
+                    onClick={() => navigate('/listagem-fornecedores')}
                     type='button'
                     className='btn btn-danger'
                   >

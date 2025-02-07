@@ -221,7 +221,7 @@ function CadastroAgendamento() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-agendamentos')}
                   type='button'
                   className='btn btn-danger'
                 >

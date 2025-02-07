@@ -280,7 +280,7 @@ function CadastroPet() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-pets')}
                   type='button'
                   className='btn btn-danger'
                 >

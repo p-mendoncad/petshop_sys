@@ -34,7 +34,7 @@ function ListagemCargos() {
     let data = JSON.stringify({ id });
     let url = `${baseURL}/${id}`;
     console.log(url);
-     await axios
+    await axios
       .delete(url, data, {
         headers: { 'Content-Type': 'application/json' },
       })
