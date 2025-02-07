@@ -16,10 +16,6 @@ import { BASE_URL } from '../config/axios';
 function CadastroVenda() {
   const { idParam } = useParams();
 
-  const editar = (id) => {
-    navigate(`/cadastro-venda/${id}`);
-  };
-
   const navigate = useNavigate();
 
   const baseURL = `${BASE_URL}/Venda`;
