@@ -10,14 +10,14 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 // import '../custom.css';
 import axios from 'axios';
-import { BASE_URL } from '../config/axios';
+import { BASE_URL3 } from '../config/axios';
 
 function CadastroServico() {
   const { idParam } = useParams();
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/Servico`;
+  const baseURL = `${BASE_URL3}/Servicos`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -76,7 +76,7 @@ function CadastroServico() {
   }
 
   async function buscar() {
-    if (idParam) {
+    if (idParam != null) {
       await axios.get(`${baseURL}/${idParam}`).then((response) => {
         setDados(response.data);
       });
@@ -138,7 +138,7 @@ function CadastroServico() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-servicos')}
                   type='button'
                   className='btn btn-danger'
                 >

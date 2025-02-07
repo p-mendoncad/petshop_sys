@@ -89,7 +89,7 @@ function CadastroVenda() {
   }
 
   async function buscar() {
-    if (idParam) {
+    if (idParam != null) {
       await axios.get(`${baseURL}/${idParam}`).then((response) => {
         setDados(response.data);
       });
@@ -189,7 +189,7 @@ function CadastroVenda() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-vendas')}
                   type='button'
                   className='btn btn-danger'
                 >

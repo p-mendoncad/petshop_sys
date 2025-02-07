@@ -13,19 +13,19 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import axios from 'axios';
-import { BASE_URL2 } from '../config/axios';
+import { BASE_URL } from '../config/axios';
 
-const baseURL = `${BASE_URL2}/clientes`;
+const baseURL = `${BASE_URL}/produtos`;
 
-function ListagemClientes() {
+function ListagemCompras() {
   const navigate = useNavigate();
 
   const cadastrar = () => {
-    navigate(`/cadastro-cliente`);
+    navigate(`/cadastro-compra`);
   };
 
   const editar = (id) => {
-    navigate(`/cadastro-cliente/${id}`);
+    navigate(`/cadastro-compra/${id}`);
   };
 
   const [dados, setDados] = React.useState(null);
@@ -34,12 +34,12 @@ function ListagemClientes() {
     let data = JSON.stringify({ id });
     let url = `${baseURL}/${id}`;
     console.log(url);
-    await axios
+   await axios
       .delete(url, data, {
         headers: { 'Content-Type': 'application/json' },
       })
       .then(function (response) {
-        mensagemSucesso(`Cliente excluído com sucesso!`);
+        mensagemSucesso(`Compra excluído com sucesso!`);
         setDados(
           dados.filter((dado) => {
             return dado.id !== id;
@@ -47,7 +47,7 @@ function ListagemClientes() {
         );
       })
       .catch(function (error) {
-        mensagemErro(`Erro ao excluir o cliente`);
+        mensagemErro(`Erro ao excluir a compra`);
       });
   }
 
@@ -61,7 +61,7 @@ function ListagemClientes() {
 
   return (
     <div className='container'>
-      <Card title='Listagem de Clientes'>
+      <Card title='Listagem de Compras'>
         <div className='row'>
           <div className='col-lg-12'>
             <div className='bs-component'>
@@ -70,40 +70,28 @@ function ListagemClientes() {
                 className='btn btn-warning'
                 onClick={() => cadastrar()}
               >
-                Novo Cliente
+                Nova Compra
               </button>
               <table className='table table-hover'>
                 <thead>
                   <tr>
-                        <th scope='col'>Nome</th>
-                        <th scope='col'>CNPJ</th>
-                        <th scope='col'>E-mail</th>
-                        <th scope='col'>Celular</th>
-                        {/* <th scope='col'>Logradouro</th>
-                        <th scope='col'>Número</th>
-                        <th scope='col'>Complemento</th>
-                        <th scope='col'>Bairro</th>
-                        <th scope='col'>Cidade</th>
-                        <th scope='col'>Estado</th> */}
-                        <th scope='col'>CEP</th>
-                        {/* <th scope='col'>Data de Cadastro</th>*/}
+                    <th scope='col'>Produto</th>
+                    <th scope='col'>Lote</th>
+                    <th scope='col'>Quantidade</th>
+                    <th scope='col'>Vencimento</th>
+                    <th scope='col'>Entrada</th>
+                    <th scope='col'>Valor Unitário</th>
                   </tr>
                 </thead>
                 <tbody>
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.cnpj}</td>
-                      <td>{dado.email}</td>
-                      <td>{dado.celular}</td>
-                      {/* <td>{dado.logradouro}</td>
-                      <td>{dado.numero}</td>
-                      <td>{dado.complemento}</td>
-                      <td>{dado.bairro}</td>
-                      <td>{dado.cidade}</td>
-                      <td>{dado.estado}</td> */}
-                      <td>{dado.cep}</td>
-                      {/* <td>{dado.dataCadastro}</td> */}
+                      <td>{dado.lote}</td>
+                      <td>{dado.quantidade}</td>
+                      <td>{dado.vencimento}</td>
+                      <td>{dado.dataEntrada}</td>
+                      <td>R$ {parseFloat(dado.precoCompra).toFixed(2)}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton
@@ -114,7 +102,7 @@ function ListagemClientes() {
                           </IconButton>
                           <IconButton
                             aria-label='delete'
-                              onClick={() => excluir(dado.id)}
+                           onClick={() => excluir(dado.id)}
                           >
                             <DeleteIcon />
                           </IconButton>
@@ -132,4 +120,4 @@ function ListagemClientes() {
   );
 }
 
-export default ListagemClientes;
+export default ListagemCompras;

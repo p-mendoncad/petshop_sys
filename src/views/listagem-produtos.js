@@ -30,26 +30,26 @@ function ListagemProdutos() {
 
   const [dados, setDados] = React.useState(null);
 
-  // async function excluir(id) {
-  //   let data = JSON.stringify({ id });
-  //   //let url = `${baseURL}/${id}`;
-  //   console.log(url);
-  //  // await axios
-  //     .delete(url, data, {
-  //       headers: { 'Content-Type': 'application/json' },
-  //     })
-  //     .then(function (response) {
-  //       mensagemSucesso(`Produto excluído com sucesso!`);
-  //       setDados(
-  //         dados.filter((dado) => {
-  //           return dado.id !== id;
-  //         })
-  //       );
-  //     })
-  //     .catch(function (error) {
-  //       mensagemErro(`Erro ao excluir o produto`);
-  //     });
-  // }
+  async function excluir(id) {
+    let data = JSON.stringify({ id });
+    let url = `${baseURL}/${id}`;
+    console.log(url);
+    await axios
+      .delete(url, data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(function (response) {
+        mensagemSucesso(`Produto excluído com sucesso!`);
+        setDados(
+          dados.filter((dado) => {
+            return dado.id !== id;
+          })
+        );
+      })
+      .catch(function (error) {
+        mensagemErro(`Erro ao excluir o produto`);
+      });
+  }
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -82,14 +82,14 @@ function ListagemProdutos() {
                     <th scope='col'>Qtd. Mínima</th>
                     {/* <th scope='col'>Qtd. Máxima</th> */}
                     {/* <th scope='col'>Lote</th> */}
-                    <th scope='col'>Vencimento</th>
+                    {/* <th scope='col'>Vencimento</th> */}
                     {/* <th scope='col'>Perecibilidade</th> */}
-                    <th scope='col'>Entrada</th>
+                    {/* <th scope='col'>Entrada</th> */}
                     {/* <th scope='col'>Uni. Medida</th> */}
-                    <th scope='col'>Preço de Compra</th>
+                    {/* <th scope='col'>Preço de Compra</th> */}
                     {/* <th scope='col'>Cód. Barras</th> */}
                     {/* <th scope='col'>Fornecedor</th> */}
-                    {/* <th scope='col'>Setor</th> */}
+                    <th scope='col'>Setor</th>
 
                     
 
@@ -99,13 +99,14 @@ function ListagemProdutos() {
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.precoVenda}</td>
+                      <td>R$ {parseFloat(dado.precoVenda).toFixed(2)}</td>
                       <td>{dado.quantidade}</td>
                       <td>{dado.descricao}</td>
                       <td>{dado.quantMin}</td>
-                      <td>{dado.vencimento}</td>
+                       {/*<td>{dado.vencimento}</td>
                       <td>{dado.dataEntrada}</td>
-                      <td>{dado.precoCompra}</td>
+                      <td>{dado.precoCompra}</td> */}
+                      <td>{dado.idSetor}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton
@@ -116,7 +117,7 @@ function ListagemProdutos() {
                           </IconButton>
                           <IconButton
                             aria-label='delete'
-                           // onClick={() => excluir(dado.id)}
+                           onClick={() => excluir(dado.id)}
                           >
                             <DeleteIcon />
                           </IconButton>

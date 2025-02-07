@@ -18,7 +18,7 @@ function CadastroEstoque() {
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/Estoque`;
+  const baseURL = `${BASE_URL}/Estoques`;
 
   const [id, setId] = useState('');
   const [setor, setSetor] = useState(0);
@@ -73,12 +73,14 @@ function CadastroEstoque() {
   }
 
   async function buscar() {
-    await axios.get(`${baseURL}/${idParam}`).then((response) => {
-      setDados(response.data);
-    });
-    setId(dados.id);
-    setSetor(dados.setor);
-    setDescricao(dados.descricao);
+    if (idParam != null) {
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+        setDados(response.data);
+      });
+      setId(dados.id);
+      setSetor(dados.setor);
+      setDescricao(dados.descricao);
+    }
   }
 
   useEffect(() => {
@@ -125,7 +127,7 @@ function CadastroEstoque() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-estoques')}
                   type='button'
                   className='btn btn-danger'
                 >

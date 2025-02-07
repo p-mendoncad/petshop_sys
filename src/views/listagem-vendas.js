@@ -30,26 +30,26 @@ function ListagemVendas() {
 
   const [dados, setDados] = React.useState(null);
 
-  // async function excluir(id) {
-  //   let data = JSON.stringify({ id });
-  //   //let url = `${baseURL}/${id}`;
-  //   console.log(url);
-  //  // await axios
-  //     .delete(url, data, {
-  //       headers: { 'Content-Type': 'application/json' },
-  //     })
-  //     .then(function (response) {
-  //       mensagemSucesso(`Fornecedor excluído com sucesso!`);
-  //       setDados(
-  //         dados.filter((dado) => {
-  //           return dado.id !== id;
-  //         })
-  //       );
-  //     })
-  //     .catch(function (error) {
-  //       mensagemErro(`Erro ao excluir o fornecedor`);
-  //     });
-  // }
+  async function excluir(id) {
+    let data = JSON.stringify({ id });
+    let url = `${baseURL}/${id}`;
+    console.log(url);
+    await axios
+      .delete(url, data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(function (response) {
+        mensagemSucesso(`Venda excluída com sucesso!`);
+        setDados(
+          dados.filter((dado) => {
+            return dado.id !== id;
+          })
+        );
+      })
+      .catch(function (error) {
+        mensagemErro(`Erro ao excluir a venda`);
+      });
+  }
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -79,12 +79,6 @@ function ListagemVendas() {
                         <th scope='col'>Quantidade</th>
                         <th scope='col'>Valor Unitário</th>
                         <th scope='col'>Valor Total</th>
-                        {/* <th scope='col'>Logradouro</th>
-                        <th scope='col'>Número</th>
-                        <th scope='col'>Complemento</th>
-                        <th scope='col'>Bairro</th>
-                        <th scope='col'>Cidade</th>
-                        <th scope='col'>Estado</th> */}
                         <th scope='col'>Forma de Pagamento</th>
                         {/* <th scope='col'>Data de Cadastro</th> */}
                         <th scope='col'>CPF do Cliente</th>
@@ -95,14 +89,8 @@ function ListagemVendas() {
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
                       <td>{dado.quantidade}</td>
-                      <td>{dado.valorUnitario}</td>
-                      <td>{dado.valorTotal}</td>
-                      {/* <td>{dado.logradouro}</td>
-                      <td>{dado.numero}</td>
-                      <td>{dado.complemento}</td>
-                      <td>{dado.bairro}</td>
-                      <td>{dado.cidade}</td>
-                      <td>{dado.estado}</td> */}
+                      <td>R$ {parseFloat(dado.valorUnitario).toFixed(2)}</td>
+                      <td>R$ {parseFloat(dado.valorTotal).toFixed(2)}</td>
                       <td>{dado.formaPagamento}</td>
                       {/* <td>{dado.dataCadastro}</td> */}
                       <td>{dado.cpfCliente}</td>
@@ -116,7 +104,7 @@ function ListagemVendas() {
                           </IconButton>
                           <IconButton
                             aria-label='delete'
-                           // onClick={() => excluir(dado.id)}
+                           onClick={() => excluir(dado.id)}
                           >
                             <DeleteIcon />
                           </IconButton>

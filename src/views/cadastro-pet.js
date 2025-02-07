@@ -11,13 +11,13 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 // import '../custom.css';
 
 import axios from 'axios';
-import { BASE_URL } from '../config/axios';
-
+import { BASE_URL2 } from '../config/axios';
+import { BASE_URL3 } from '../config/axios';
 
 function CadastroPet() {
   const { idParam } = useParams();
   const navigate = useNavigate();
-  const baseURL = `${BASE_URL}/Pet`;
+  const baseURL3 = `${BASE_URL3}/pets`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -29,7 +29,8 @@ function CadastroPet() {
   const [animal, setAnimal] = useState('');
   const [nomeRaca, setNomeRaca] = useState('');
   const [racaId, setRacaId] = useState('');
-  const [cliente, setCliente] = useState('');
+  const [nomeCliente, setNomeCliente] = useState('');
+  const [clienteId, setClienteId] = useState('');
 
   const [dados, setDados] = useState([]);
 
@@ -45,7 +46,8 @@ function CadastroPet() {
       setAnimal('');
       setNomeRaca('');
       setRacaId('');
-      setCliente('');
+      setNomeCliente('');
+      setClienteId('');
     } else {
       setId(dados.id);
       setNome(dados.nome);
@@ -57,7 +59,9 @@ function CadastroPet() {
       setAnimal(dados.animal);
       setNomeRaca(dados.nomeRaca);
       setRacaId(dados.racaId);
-      setCliente(dados.cliente);
+      setNomeCliente(dados.nomeCliente);
+      setClienteId(dados.clienteId);
+
     }
   }
 
@@ -73,12 +77,13 @@ function CadastroPet() {
       animal,
       nomeRaca,
       racaId,
-      cliente,
+      nomeCliente,
+      clienteId,
     };
     data = JSON.stringify(data);
     if (idParam == null) {
       await axios
-        .post(baseURL, data, {
+        .post(baseURL3, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -90,7 +95,7 @@ function CadastroPet() {
         });
     } else {
       await axios
-        .put(`${baseURL}/${idParam}`, data, {
+        .put(`${baseURL3}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -104,8 +109,8 @@ function CadastroPet() {
   }
 
   async function buscar() {
-    if (idParam) {
-      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+    if (idParam != null) {
+      await axios.get(`${baseURL3}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);
@@ -118,12 +123,32 @@ function CadastroPet() {
       setAnimal(dados.animal);
       setNomeRaca(dados.nomeRaca);
       setRacaId(dados.racaId);
-      setCliente(dados.cliente);
+      setNomeCliente(dados.nomeCliente);
+      setClienteId(dados.clienteId);
+      console.log(dados.nome);
+      // console.log(dados.racaId); 
+      console.log(dados.nomeCliente);
     }
   }
 
+  const [dadosRaca, setDadosRaca] = React.useState(null);
+
   useEffect(() => {
-    buscar(); // eslint-disable-next-line
+    axios.get(`${BASE_URL3}/racas`).then((response) => {
+      setDadosRaca(response.data);
+    });
+  }, []);
+
+  const [dadosCliente, setDadosCliente] = React.useState(null);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL2}/clientes`).then((response) => {
+      setDadosCliente(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    buscar();
   }, [id]);
 
   if (!dados) return null;
@@ -210,35 +235,41 @@ function CadastroPet() {
                   onChange={(e) => setAnimal(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Raça: *' htmlFor='inputNomeRaca'>
-                <input
-                  type='text'
-                  id='inputNomeRaca'
-                  value={nomeRaca}
-                  className='form-control'
-                  name='nomeRaca'
-                  onChange={(e) => setNomeRaca(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup label='ID da Raça: *' htmlFor='inputRacaId'>
-                <input
-                  type='number'
-                  id='inputRacaId'
+              <FormGroup label='Raça: *' htmlFor='selectRaca'>
+                <select
+                  className='form-select'
+                  id='selectRaca'
+                  name='raca'
                   value={racaId}
-                  className='form-control'
-                  name='racaId'
-                  onChange={(e) => setRacaId(e.target.value)}
-                />
+                  onChange={(e) => setNomeRaca(e.target.value)}
+                >
+                  <option key='0' value='0'>
+                    Selecione uma raça
+                  </option>
+                  {dadosRaca && dadosRaca.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                      {dado.nome}
+                    </option>
+                  ))}
+                </select>
               </FormGroup>
-              <FormGroup label='Cliente: *' htmlFor='inputCliente'>
-                <input
-                  type='text'
-                  id='inputCliente'
-                  value={cliente}
-                  className='form-control'
-                  name='cliente'
-                  onChange={(e) => setCliente(e.target.value)}
-                />
+              <FormGroup label='Cliente: *' htmlFor='selectCliente'>
+                <select
+                  className='form-select'
+                  id='selectCliente'
+                  name='nomeCliente'
+                  value={clienteId}
+                  onChange={(e) => setNomeCliente(e.target.value)}
+                >
+                  <option key='0' value='0'>
+                    Selecione um cliente
+                  </option>
+                  {dadosCliente && dadosCliente.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                      {dado.nome}
+                    </option>
+                  ))}
+                </select>
               </FormGroup>
               <Stack spacing={1} padding={1} direction='row'>
                 <button
@@ -249,7 +280,7 @@ function CadastroPet() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-pets')}
                   type='button'
                   className='btn btn-danger'
                 >

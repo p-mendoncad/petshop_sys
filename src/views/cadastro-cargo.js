@@ -83,7 +83,7 @@ function CadastroCargo() {
   }}
 
   useEffect(() => {
-    buscar(); // eslint-disable-next-line
+    buscar(); 
   }, [id]);
 
   if (!dados) return null;
@@ -126,7 +126,7 @@ function CadastroCargo() {
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
+                  onClick={() => navigate('/listagem-cargos')}
                   type='button'
                   className='btn btn-danger'
                 >

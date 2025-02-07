@@ -11,6 +11,7 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 // import '../custom.css';
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
+import { BASE_URL2 } from '../config/axios';
 
 function CadastroCliente() {
   const { idParam } = useParams();
@@ -18,6 +19,7 @@ function CadastroCliente() {
   const navigate = useNavigate();
 
   const baseURL = `${BASE_URL}/Cliente`;
+  const baseURL2 = `${BASE_URL2}/clientes`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -88,9 +90,8 @@ function CadastroCliente() {
       fidelidade,
     };
     data = JSON.stringify(data);
-    if (idParam == null) {
-      await axios
-        .post(baseURL, data, {
+    if (!idParam == null) {
+      await axios.post(baseURL, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -116,8 +117,8 @@ function CadastroCliente() {
   }
 
   async function buscar() {
-    if (idParam) {
-      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+    if (idParam != null) {
+      await axios.get(`${baseURL2}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);
@@ -138,7 +139,7 @@ function CadastroCliente() {
   }
 
   useEffect(() => {
-    buscar(); // eslint-disable-next-line
+    buscar(); 
   }, [id]);
 
   if (!dados) return null;
@@ -280,18 +281,13 @@ function CadastroCliente() {
                 />
               </FormGroup>
               <Stack spacing={1} padding={1} direction='row'>
-                <button
-                  onClick={salvar}
-                  type='button'
-                  className='btn btn-success'
-                >
+                <button onClick={salvar} className='btn btn-success'>
                   Salvar
                 </button>
                 <button
-                  onClick={inicializar}
-                  type='button'
+                  onClick={() => navigate('/listagem-clientes')}
                   className='btn btn-danger'
-                >
+                  >
                   Cancelar
                 </button>
               </Stack>

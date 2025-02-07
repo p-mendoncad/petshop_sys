@@ -48,6 +48,10 @@ import CadastroServico from './views/cadastro-servico';
 
 import ListagemServicos from './views/listagem-servicos';
 
+import ListagemCompras from './views/listagem-compras';
+
+import CadastroCompra from './views/cadastro-compra';
+
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 function Rotas(props) {
@@ -73,9 +77,6 @@ function Rotas(props) {
                 <Route path='/cadastro-produto/:idParam?' element={<CadastroProduto />} />
                 <Route path='/listagem-produtos' element={<ListagemProdutos />} />
 
-                {/* <Route path='/cadastro-produto/:idParam?' element={<CadastroEstoque />} />
-                <Route path='/listagem-produtos' element={<ListagemEstoques />} /> */}
-
                 <Route path='/cadastro-produto/:idParam?' element={<CadastroCaixa />} />
                 <Route path='/listagem-produtos' element={<ListagemCaixas />} />
 
@@ -96,6 +97,9 @@ function Rotas(props) {
 
                 <Route path='/cadastro-agendamento/:idParam?' element={<CadastroAgendamento/>} />
                 <Route path='/listagem-agendamentos/' element={<ListagemAgendamentos/>} />
+
+                <Route path='/cadastro-compra/:idParam?' element={<CadastroCompra />} />
+                <Route path='/listagem-compras' element={<ListagemCompras />} />
             </Routes>
         </BrowserRouter>
     );
