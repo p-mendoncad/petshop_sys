@@ -87,7 +87,7 @@ function CadastroProduto() {
         setDataEntrada(produto.dataEntrada);
         setUniMedida(produto.uniMedida);
         // setPrecoCompra(produto.precoCompra);
-        setCodBarras(produto.codBarras);
+        setCodBarras(produto.codBarras);  
         setIdFornecedor(produto.idFornecedor);
         setIdSetor(produto.idSetor);
       } catch (error) {

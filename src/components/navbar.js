@@ -108,13 +108,13 @@ function Navbar(props) {
               label='Vendas'
             />
           </ul>
-          <ul className='navbar-nav'>
+          {/* <ul className='navbar-nav'>
             <NavbarItem
               render='true'
               href='/listagem-caixas'
               label='Caixa'
             />
-          </ul>
+          </ul> */}
         </div>
       </div>
     </div>
