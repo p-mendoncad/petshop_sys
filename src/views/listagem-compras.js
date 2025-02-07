@@ -91,7 +91,7 @@ function ListagemCompras() {
                       <td>{dado.quantidade}</td>
                       <td>{dado.vencimento}</td>
                       <td>{dado.dataEntrada}</td>
-                      <td>{dado.precoCompra}</td>
+                      <td>R$ {parseFloat(dado.precoCompra).toFixed(2)}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton

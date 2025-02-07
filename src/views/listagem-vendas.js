@@ -89,8 +89,8 @@ function ListagemVendas() {
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
                       <td>{dado.quantidade}</td>
-                      <td>{dado.valorUnitario}</td>
-                      <td>{dado.valorTotal}</td>
+                      <td>R$ {parseFloat(dado.valorUnitario).toFixed(2)}</td>
+                      <td>R$ {parseFloat(dado.valorTotal).toFixed(2)}</td>
                       <td>{dado.formaPagamento}</td>
                       {/* <td>{dado.dataCadastro}</td> */}
                       <td>{dado.cpfCliente}</td>

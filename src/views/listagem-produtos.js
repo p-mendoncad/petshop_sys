@@ -99,7 +99,7 @@ function ListagemProdutos() {
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.precoVenda}</td>
+                      <td>R$ {parseFloat(dado.precoVenda).toFixed(2)}</td>
                       <td>{dado.quantidade}</td>
                       <td>{dado.descricao}</td>
                       <td>{dado.quantMin}</td>
