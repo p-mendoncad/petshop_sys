@@ -53,7 +53,7 @@ function CadastroRaca() {
     data = JSON.stringify(data);
     if (idParam == null) {
       await axios
-        .post(baseURL, data, {
+        .post(baseURL3, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -65,7 +65,7 @@ function CadastroRaca() {
         });
     } else {
       await axios
-        .put(`${baseURL}/${idParam}`, data, {
+        .put(`${baseURL3}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {

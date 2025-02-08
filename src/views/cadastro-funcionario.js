@@ -19,7 +19,7 @@ function CadastroFuncionario() {
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/funcionarios`;
+  const baseURL = `${BASE_URL}/cargos`;
   const baseURL2 = `${BASE_URL2}/funcionarios`;
 
   const [id, setId] = useState('');
@@ -97,7 +97,7 @@ function CadastroFuncionario() {
     data = JSON.stringify(data);
     if (idParam == null) {
       await axios
-        .post(baseURL, data, {
+        .post(baseURL2, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -123,7 +123,7 @@ function CadastroFuncionario() {
   }
 
   async function buscar() {
-    if (idParam != null) {
+    if (!idParam == null) {
       await axios.get(`${baseURL2}/${idParam}`).then((response) => {
         setDados(response.data);
       });
@@ -141,7 +141,7 @@ function CadastroFuncionario() {
       setEstado(dados.estado);
       setCep(dados.cep);
       setCargoId(dados.cargoId);
-      setCargo(dados.cargo);
+      setCargo(dados.cargos);
     }
   }
 
@@ -291,7 +291,7 @@ function CadastroFuncionario() {
                   id='selectCargos'
                   name='Cargos'
                   value={cargoId}
-                  onChange={(e) => setCargo(e.target.value)}  
+                  onChange={(e) => setCargoId(e.target.value)}  
                 >
                   <option key='0' value='0'>
                     Selecione um cargo

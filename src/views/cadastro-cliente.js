@@ -10,7 +10,7 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 // import '../custom.css';
 import axios from 'axios';
-import { BASE_URL } from '../config/axios';
+//import { BASE_URL } from '../config/axios';
 import { BASE_URL2 } from '../config/axios';
 
 function CadastroCliente() {
@@ -18,7 +18,7 @@ function CadastroCliente() {
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/Cliente`;
+  //const baseURL = `${BASE_URL}/Cliente`;
   const baseURL2 = `${BASE_URL2}/clientes`;
 
   const [id, setId] = useState('');
@@ -90,8 +90,9 @@ function CadastroCliente() {
       fidelidade,
     };
     data = JSON.stringify(data);
-    if (!idParam == null) {
-      await axios.post(baseURL, data, {
+    if (idParam == null) {
+      await axios
+      .post(baseURL2, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -103,7 +104,7 @@ function CadastroCliente() {
         });
     } else {
       await axios
-        .put(`${baseURL}/${idParam}`, data, {
+        .put(`${baseURL2}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {

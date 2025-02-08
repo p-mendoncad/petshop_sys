@@ -76,7 +76,7 @@ function ListagemClientes() {
                 <thead>
                   <tr>
                         <th scope='col'>Nome</th>
-                        <th scope='col'>CNPJ</th>
+                        <th scope='col'>CPF</th>
                         <th scope='col'>E-mail</th>
                         <th scope='col'>Celular</th>
                         {/* <th scope='col'>Logradouro</th>
@@ -93,7 +93,7 @@ function ListagemClientes() {
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.cnpj}</td>
+                      <td>{dado.cpf}</td>
                       <td>{dado.email}</td>
                       <td>{dado.celular}</td>
                       {/* <td>{dado.logradouro}</td>
