@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import Stack from '@mui/material/Stack';
-
 import Card from '../components/card';
 import FormGroup from '../components/form-group';
 
@@ -13,7 +12,7 @@ import { BASE_URL } from '../config/axios';
 function CadastroProduto() {
   const { idParam } = useParams();
   const navigate = useNavigate();
-  const baseURL = `${BASE_URL}/Produtos`;
+  const baseURL = `${BASE_URL}/produtos`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -25,6 +24,53 @@ function CadastroProduto() {
   const [precoCompra, setPrecoCompra] = useState('');
   const [idFornecedor, setIdFornecedor] = useState('');
   const [idSetor, setIdSetor] = useState('');
+  const [idProduto, setIdProduto] = useState('');
+
+  const [dadosProdutos, setDadosProdutos] = useState([]);
+  const [dadosFornecedores, setDadosFornecedores] = useState([]);
+
+  useEffect(() => {
+    async function carregarDados() {
+      try {
+        const [produtosRes, fornecedoresRes] = await Promise.all([
+          axios.get(`${BASE_URL}/produtos`),
+          axios.get(`${BASE_URL}/fornecedores`),
+        ]);
+        setDadosProdutos(produtosRes.data);
+        setDadosFornecedores(fornecedoresRes.data);
+      } catch (error) {
+        mensagemErro("Erro ao carregar dados.");
+      }
+    }
+
+    carregarDados();
+  }, []);
+
+  useEffect(() => {
+    async function buscar() {
+      if (idParam) {
+        try {
+          const response = await axios.get(`${baseURL}/${idParam}`);
+          const dados = response.data;
+          setId(dados.id);
+          setNome(dados.nome);
+          setQuantidade(dados.quantidade);
+          setLote(dados.lote);
+          setVencimento(dados.vencimento);
+          setPerecibilidade(dados.perecibilidade);
+          setDataEntrada(dados.dataEntrada);
+          setPrecoCompra(dados.precoCompra);
+          setIdFornecedor(dados.idFornecedor);
+          setIdSetor(dados.idSetor);
+          setIdProduto(dados.idProduto);
+        } catch (error) {
+          mensagemErro("Erro ao buscar produto.");
+        }
+      }
+    }
+
+    buscar();
+  }, [idParam]);
 
   async function salvar() {
     const data = {
@@ -38,71 +84,26 @@ function CadastroProduto() {
       precoCompra,
       idFornecedor,
       idSetor,
+      idProduto
     };
 
     try {
       if (!idParam) {
-        await axios.post(baseURL, data);
-        mensagemSucesso(`Produto "${nome}" cadastrado com sucesso!`);
+        await axios.post(baseURL, data, {
+          headers: { 'Content-Type': 'application/json' },
+        });
+        mensagemSucesso(`Produto ${nome} cadastrado com sucesso!`);
       } else {
-        await axios.put(`${baseURL}/${idParam}`, data);
-        mensagemSucesso(`Produto "${nome}" atualizado com sucesso!`);
+        await axios.put(`${baseURL}/${idParam}`, data, {
+          headers: { 'Content-Type': 'application/json' },
+        });
+        mensagemSucesso(`Produto ${nome} atualizado com sucesso!`);
       }
       navigate('/listagem-produtos');
     } catch (error) {
-      mensagemErro(error.response?.data || 'Erro ao salvar o produto.');
+      mensagemErro(error.response?.data || "Erro ao salvar produto.");
     }
   }
-
-  async function buscarProduto() {
-    if (idParam != null) {
-      try {
-        const response = await axios.get(`${baseURL}/${idParam}`);
-        const produto = response.data;
-        setId(produto.id);
-        setNome(produto.nome);
-        setQuantidade(produto.quantidade);
-        setLote(produto.lote);
-        setVencimento(produto.vencimento);
-        setPerecibilidade(produto.perecibilidade);
-        setDataEntrada(produto.dataEntrada);
-        setPrecoCompra(produto.precoCompra);
-        setIdFornecedor(produto.idFornecedor);
-        setIdSetor(produto.idSetor);
-      } catch (error) {
-        mensagemErro('Erro ao buscar o produto.');
-      }
-    }
-  }
-
-  const [dadosFornecedores, setDadosFornecedores] = React.useState(null);
-
-  useEffect(() => {
-    axios.get(`${BASE_URL}/fornecedores`).then((response) => {
-      setDadosFornecedores(response.data);
-    });
-  }, []);
-  const [dadosEstoques, setDadosEstoques] = React.useState(null);
-
-  useEffect(() => {
-    axios.get(`${BASE_URL}/estoques`).then((response) => {
-      setDadosEstoques(response.data);
-    });
-  }, []);
-
-  const [dadosProdutos, setDadosProdutos] = React.useState(null);
-
-  useEffect(() => {
-    axios.get(`${BASE_URL}/produtos`).then((response) => {
-      setDadosProdutos(response.data);
-    });
-  }, []);
-  
-
-
-  useEffect(() => {
-    buscarProduto();
-  }, [idParam]);
 
   return (
     <div className='container'>
@@ -110,20 +111,17 @@ function CadastroProduto() {
         <div className='row'>
           <div className='col-lg-12'>
             <div className='bs-component'>
-            <FormGroup label='Produto: *' htmlFor='selectProduto'>
+              <FormGroup label='Produto: *' htmlFor='selectProduto'>
                 <select
                   className='form-select'
                   id='selectProduto'
-                  name='produto'
-                  value={id}
-                  onChange={(e) => setDadosProdutos(e.target.value)}  // Use 'setServico' aqui
+                  value={idProduto}
+                  onChange={(e) => setIdProduto(e.target.value)}
                 >
-                  <option key='0' value='0'>
-                    Selecione um produto
-                  </option>
-                  {dadosProdutos && dadosProdutos.map((dado) => (
-                    <option key={dado.id} value={dado.id}>
-                      {dado.nome}
+                  <option value=''>Selecione um produto</option>
+                  {dadosProdutos.map((produto) => (
+                    <option key={produto.id} value={produto.id}>
+                      {produto.nome}
                     </option>
                   ))}
                 </select>
@@ -187,37 +185,26 @@ function CadastroProduto() {
                   onChange={(e) => setPrecoCompra(e.target.value)}
                 />
               </FormGroup>
-              
+
               <FormGroup label='Fornecedor: *' htmlFor='selectFornecedor'>
                 <select
                   className='form-select'
                   id='selectFornecedor'
-                  name='fornecedor'
                   value={idFornecedor}
-                  onChange={(e) => setDadosFornecedores(e.target.value)}  // Use 'setServico' aqui
+                  onChange={(e) => setIdFornecedor(e.target.value)}
                 >
-                  <option key='0' value='0'>
-                    Selecione um fornecedor
-                  </option>
-                  {dadosFornecedores && dadosFornecedores.map((dado) => (
-                    <option key={dado.id} value={dado.id}>
-                      {dado.nome}
+                  <option value=''>Selecione um fornecedor</option>
+                  {dadosFornecedores.map((fornecedor) => (
+                    <option key={fornecedor.id} value={fornecedor.id}>
+                      {fornecedor.nome}
                     </option>
                   ))}
                 </select>
               </FormGroup>
-        
 
               <Stack spacing={1} padding={1} direction='row'>
-                <button onClick={salvar} className='btn btn-success'>
-                  Salvar
-                </button>
-                <button
-                  onClick={() => navigate('/listagem-produtos')}
-                  className='btn btn-danger'
-                >
-                  Cancelar
-                </button>
+                <button onClick={salvar} className='btn btn-success'>Salvar</button>
+                <button onClick={() => navigate('/listagem-produtos')} className='btn btn-danger'>Cancelar</button>
               </Stack>
             </div>
           </div>

@@ -11,7 +11,6 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 // import '../custom.css';
 
 import axios from 'axios';
-import { BASE_URL } from '../config/axios';
 import { BASE_URL3 } from '../config/axios';
 
 function CadastroAgendamento() {
@@ -19,7 +18,7 @@ function CadastroAgendamento() {
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL3}/Agendamentos`;
+  const baseURL3 = `${BASE_URL3}/Agendamentos`;
 
   const [id, setId] = useState('');
   const [data, setData] = useState('');
@@ -64,7 +63,7 @@ function CadastroAgendamento() {
     data = JSON.stringify(data);
     if (idParam == null) {
       await axios
-        .post(baseURL, data, {
+        .post(baseURL3, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
@@ -76,7 +75,7 @@ function CadastroAgendamento() {
         });
     } else {
       await axios
-        .put(`${baseURL}/${idParam}`, data, {
+        .put(`${baseURL3}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
@@ -91,7 +90,7 @@ function CadastroAgendamento() {
 
   async function buscar() {
     if (idParam != null) {
-      await axios.get(`${baseURL}/${idParam}`).then((response) => {
+      await axios.get(`${baseURL3}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);
