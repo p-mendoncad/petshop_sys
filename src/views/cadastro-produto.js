@@ -68,7 +68,7 @@ function CadastroProduto() {
     }
   }
 
-  async function buscarProduto() {
+  async function buscar() {
     if (idParam != null) {
       try {
         const response = await axios.get(`${baseURL}/${idParam}`);
@@ -96,7 +96,7 @@ function CadastroProduto() {
     }
   }
 
-  const [dadosFornecedores, setDadosFornecedores] = React.useState(null);
+  const [dadosFornecedor, setDadosFornecedores] = React.useState(null);
 
   useEffect(() => {
     axios.get(`${BASE_URL}/fornecedores`).then((response) => {
@@ -112,7 +112,7 @@ function CadastroProduto() {
   }, []);
 
   useEffect(() => {
-    buscarProduto();
+    buscar();
   }, [idParam]);
 
   return (
@@ -264,12 +264,12 @@ function CadastroProduto() {
                   id='selectFornecedor'
                   name='fornecedor'
                   value={idFornecedor}
-                  onChange={(e) => setDadosFornecedores(e.target.value)}  // Use 'setServico' aqui
+                  onChange={(e) => setIdFornecedor(e.target.value)}  // Use 'setServico' aqui
                 >
                   <option key='0' value='0'>
                     Selecione um fornecedor
                   </option>
-                  {dadosFornecedores && dadosFornecedores.map((dado) => (
+                  {dadosFornecedor && dadosFornecedor.map((dado) => (
                     <option key={dado.id} value={dado.id}>
                       {dado.nome}
                     </option>
@@ -282,7 +282,7 @@ function CadastroProduto() {
                   id='selectSetor'
                   name='setor'
                   value={idSetor}
-                  onChange={(e) => setDadosEstoques(e.target.value)}  // Use 'setServico' aqui
+                  onChange={(e) => setIdSetor(e.target.value)}  // Use 'setServico' aqui
                 >
                   <option key='0' value='0'>
                     Selecione um setor

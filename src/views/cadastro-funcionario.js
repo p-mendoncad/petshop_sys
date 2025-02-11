@@ -123,7 +123,7 @@ function CadastroFuncionario() {
   }
 
   async function buscar() {
-    if (!idParam == null) {
+    if (idParam != null) {
       await axios.get(`${baseURL2}/${idParam}`).then((response) => {
         setDados(response.data);
       });

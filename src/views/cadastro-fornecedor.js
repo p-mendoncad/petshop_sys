@@ -292,7 +292,7 @@
                     onChange={(e) => setIdEstoque(e.target.value)}
                   >
                     <option key='0' value='0'>
-                      Selecione uma estoque
+                      Selecione um setor do estoque
                     </option>
                     {dadosEstoque && dadosEstoque.map((dado) => (
                       <option key={dado.id} value={dado.id}>
