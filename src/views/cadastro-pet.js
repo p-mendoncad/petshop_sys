@@ -29,7 +29,7 @@ function CadastroPet() {
   const [animal, setAnimal] = useState('');
   const [nomeRaca, setNomeRaca] = useState('');
   const [racaId, setRacaId] = useState('');
-  const [nomeCliente, setNomeCliente] = useState('');
+  const [cliente, setCliente] = useState('');
   const [clienteId, setClienteId] = useState('');
 
   const [dados, setDados] = useState([]);
@@ -46,7 +46,7 @@ function CadastroPet() {
       setAnimal('');
       setNomeRaca('');
       setRacaId('');
-      setNomeCliente('');
+      setCliente('');
       setClienteId('');
     } else {
       setId(dados.id);
@@ -59,7 +59,7 @@ function CadastroPet() {
       setAnimal(dados.animal);
       setNomeRaca(dados.nomeRaca);
       setRacaId(dados.racaId);
-      setNomeCliente(dados.nomeCliente);
+      setCliente(dados.cliente);
       setClienteId(dados.clienteId);
 
     }
@@ -77,7 +77,7 @@ function CadastroPet() {
       animal,
       nomeRaca,
       racaId,
-      nomeCliente,
+      cliente,
       clienteId,
     };
     data = JSON.stringify(data);
@@ -123,11 +123,11 @@ function CadastroPet() {
       setAnimal(dados.animal);
       setNomeRaca(dados.nomeRaca);
       setRacaId(dados.racaId);
-      setNomeCliente(dados.nomeCliente);
+      setCliente(dados.cliente);
       setClienteId(dados.clienteId);
       console.log(dados.nome);
       // console.log(dados.racaId); 
-      console.log(dados.nomeCliente);
+      console.log(dados.cliente);
     }
   }
 
@@ -257,15 +257,15 @@ function CadastroPet() {
                 <select
                   className='form-select'
                   id='selectCliente'
-                  name='nomeCliente'
-                  value={clienteId}
-                  onChange={(e) => setNomeCliente(e.target.value)}
+                  name='cliente'
+                  value={cliente}
+                  onChange={(e) => setCliente(e.target.value)}
                 >
                   <option key='0' value='0'>
                     Selecione um cliente
                   </option>
                   {dadosCliente && dadosCliente.map((dado) => (
-                    <option key={dado.id} value={dado.id}>
+                    <option key={dado.id} value={dado.nome}>
                       {dado.nome}
                     </option>
                   ))}

@@ -136,6 +136,7 @@ function CadastroCliente() {
       setEstado(dados.estado);
       setCep(dados.cep);
       setFidelidade(dados.fidelidade);
+      console.log(dados.dataNascimento);
     }
   }
 

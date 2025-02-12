@@ -33,7 +33,7 @@
     const [estado, setEstado] = useState('');
     const [cep, setCep] = useState('');
     const [dataCadastro, setDataCadastro] = useState('');
-    const [tipoEstoque, setTipoEstoque] = useState('');
+    const [tipoProduto, setTipoProduto] = useState('');
     const [estoqueId, setIdEstoque] = useState('');
 
     const [dados, setDados] = useState([]);
@@ -53,7 +53,7 @@
         setEstado('');
         setCep('');
         setDataCadastro('');
-        setTipoEstoque('');
+        setTipoProduto('');
         setIdEstoque('');
       } else {
         setId(dados.id);
@@ -69,7 +69,7 @@
         setEstado(dados.estado);
         setCep(dados.cep);
         setDataCadastro(dados.dataCadastro);
-        setTipoEstoque(dados.tipoEstoque);
+        setTipoProduto(dados.tipoProduto);
         setIdEstoque(dados.estoqueId);
       }
     }
@@ -89,7 +89,7 @@
         estado,
         cep,
         dataCadastro,
-        tipoEstoque,
+        tipoProduto,
         estoqueId,
       };
       data = JSON.stringify(data);
@@ -138,7 +138,7 @@
         setEstado(dados.estado);
         setCep(dados.cep);
         setDataCadastro(dados.dataCadastro);
-        setTipoEstoque(dados.tipoEstoque);
+        setTipoProduto(dados.tipoProduto);
         setIdEstoque(dados.estoqueId);
       }
     }
@@ -288,8 +288,8 @@
                     className='form-select'
                     id='selectEstoque'
                     name='estoque'
-                    value={estoqueId}
-                    onChange={(e) => setIdEstoque(e.target.value)}
+                    value={tipoProduto}
+                    onChange={(e) => setTipoProduto(e.target.value)}
                   >
                     <option key='0' value='0'>
                       Selecione um setor do estoque

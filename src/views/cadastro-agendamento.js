@@ -149,12 +149,12 @@ function CadastroAgendamento() {
               </FormGroup>
               <FormGroup label='Data: *' htmlFor='inputData'>
                 <input
-                  type='text'
+                  type='date'
                   id='inputData'
-                  value={data}  
+                  value={data}
                   className='form-control'
                   name='data'
-                  onChange={(e) => setData(e.target.value)} 
+                  onChange={(e) => setData(e.target.value)}
                 />
               </FormGroup>
               <FormGroup
