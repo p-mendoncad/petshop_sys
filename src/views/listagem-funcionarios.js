@@ -76,6 +76,7 @@ function ListagemFuncionarios() {
                 <thead>
                   <tr>
                         <th scope='col'>Nome</th>
+                        <th scope='col'>Cargo</th>
                         <th scope='col'>CPF</th>
                         <th scope='col'>E-mail</th>
                         <th scope='col'>Celular</th>

@@ -30,7 +30,7 @@ function CadastroProduto() {
   const [uniMedida, setUniMedida] = useState('');
   // const [precoCompra, setPrecoCompra] = useState('');
   const [codBarras, setCodBarras] = useState('');
-  const [idFornecedor, setIdFornecedor] = useState('');
+  // const [idFornecedor, setIdFornecedor] = useState('');
   const [idSetor, setIdSetor] = useState('');
 
   async function salvar() {
@@ -50,7 +50,7 @@ function CadastroProduto() {
       uniMedida,
       // precoCompra,
       codBarras,
-      idFornecedor,
+      // idFornecedor,
       idSetor,
     };
 
@@ -88,7 +88,7 @@ function CadastroProduto() {
         setUniMedida(produto.uniMedida);
         // setPrecoCompra(produto.precoCompra);
         setCodBarras(produto.codBarras);  
-        setIdFornecedor(produto.idFornecedor);
+        // setIdFornecedor(produto.idFornecedor);
         setIdSetor(produto.idSetor);
       } catch (error) {
         mensagemErro('Erro ao buscar o produto.');
@@ -258,7 +258,7 @@ function CadastroProduto() {
                   onChange={(e) => setCodBarras(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Fornecedor: *' htmlFor='selectFornecedor'>
+              {/* <FormGroup label='Fornecedor: *' htmlFor='selectFornecedor'>
                 <select
                   className='form-select'
                   id='selectFornecedor'
@@ -275,7 +275,7 @@ function CadastroProduto() {
                     </option>
                   ))}
                 </select>
-              </FormGroup>
+              </FormGroup> */}
               <FormGroup label='Setor: *' htmlFor='selectSetor'>
                 <select
                   className='form-select'
@@ -294,12 +294,17 @@ function CadastroProduto() {
                   ))}
                 </select>
               </FormGroup>
-              <Stack spacing={2} direction='row'>
-                <button onClick={salvar} className='btn btn-success'>
+              <Stack spacing={1} padding={1} direction='row'>
+                <button
+                  onClick={salvar}
+                  type='button'
+                  className='btn btn-success'
+                >
                   Salvar
                 </button>
                 <button
-                  onClick={() => navigate('/listagem-produtos')}
+                  onClick={() => navigate('/listagem-racas')}
+                  type='button'
                   className='btn btn-danger'
                 >
                   Cancelar
