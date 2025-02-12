@@ -51,7 +51,7 @@ function CadastroAgendamento() {
   }
 
   async function salvar() {
-    let data = {
+    let dadosAgendamento = {
       id,
       data,
       horario,
@@ -60,10 +60,10 @@ function CadastroAgendamento() {
       servico,
       pet,
     };
-    data = JSON.stringify(data);
+    dadosAgendamento = JSON.stringify(dadosAgendamento);
     if (idParam == null) {
       await axios
-        .post(baseURL3, data, {
+        .post(baseURL3, dadosAgendamento, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
@@ -71,11 +71,11 @@ function CadastroAgendamento() {
           navigate(`/listagem-agendamentos`);
         })
         .catch(function (error) {
-          mensagemErro(error.response.data);
+          mensagemErro(error.response.dadosAgendamento);
         });
     } else {
       await axios
-        .put(`${baseURL3}/${idParam}`, data, {
+        .put(`${baseURL3}/${idParam}`, dadosAgendamento, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
@@ -83,7 +83,7 @@ function CadastroAgendamento() {
           navigate(`/listagem-agendamentos`);
         })
         .catch(function (error) {
-          mensagemErro(error.response.data);
+          mensagemErro(error.response.dadosAgendamento);
         });
     }
   }
