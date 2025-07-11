@@ -240,7 +240,7 @@ function CadastroPet() {
                   id='selectRaca'
                   name='raca'
                   value={racaId}
-                  onChange={(e) => setNomeRaca(e.target.value)}
+                  onChange={(e) => setRacaId(e.target.value)}
                 >
                   <option key='0' value='0'>
                     Selecione uma raça
