@@ -13,9 +13,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import axios from 'axios';
-import { BASE_URL2 } from '../config/axios';
+import { BASE_URL } from '../config/axios';
 
-const baseURL = `${BASE_URL2}/clientes`;
+const baseURL = `${BASE_URL}/clientes`;
 
 function ListagemClientes() {
   const navigate = useNavigate();

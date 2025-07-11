@@ -12,15 +12,14 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
-import { BASE_URL2 } from '../config/axios';
 
 function CadastroFuncionario() {
   const { idParam } = useParams();
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/cargos`;
-  const baseURL2 = `${BASE_URL2}/funcionarios`;
+  const baseURLCargo = `${BASE_URL}/cargos`;
+  const baseURL = `${BASE_URL}/funcionarios`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -97,7 +96,7 @@ function CadastroFuncionario() {
     data = JSON.stringify(data);
     if (idParam == null) {
       await axios
-        .post(baseURL2, data, {
+        .post(baseURL, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -109,7 +108,7 @@ function CadastroFuncionario() {
         });
     } else {
       await axios
-        .put(`${baseURL2}/${idParam}`, data, {
+        .put(`${baseURL}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -124,7 +123,7 @@ function CadastroFuncionario() {
 
   async function buscar() {
     if (idParam != null) {
-      await axios.get(`${baseURL2}/${idParam}`).then((response) => {
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);

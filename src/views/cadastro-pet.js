@@ -11,13 +11,12 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 // import '../custom.css';
 
 import axios from 'axios';
-import { BASE_URL2 } from '../config/axios';
-import { BASE_URL3 } from '../config/axios';
+import { BASE_URL } from '../config/axios';
 
 function CadastroPet() {
   const { idParam } = useParams();
   const navigate = useNavigate();
-  const baseURL3 = `${BASE_URL3}/pets`;
+  const baseURL = `${BASE_URL}/pets`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -83,7 +82,7 @@ function CadastroPet() {
     data = JSON.stringify(data);
     if (idParam == null) {
       await axios
-        .post(baseURL3, data, {
+        .post(baseURL, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -95,7 +94,7 @@ function CadastroPet() {
         });
     } else {
       await axios
-        .put(`${baseURL3}/${idParam}`, data, {
+        .put(`${baseURL}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -110,7 +109,7 @@ function CadastroPet() {
 
   async function buscar() {
     if (idParam != null) {
-      await axios.get(`${baseURL3}/${idParam}`).then((response) => {
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);
@@ -134,7 +133,7 @@ function CadastroPet() {
   const [dadosRaca, setDadosRaca] = React.useState(null);
 
   useEffect(() => {
-    axios.get(`${BASE_URL3}/racas`).then((response) => {
+    axios.get(`${BASE_URL}/racas`).then((response) => {
       setDadosRaca(response.data);
     });
   }, []);
@@ -142,7 +141,7 @@ function CadastroPet() {
   const [dadosCliente, setDadosCliente] = React.useState(null);
 
   useEffect(() => {
-    axios.get(`${BASE_URL2}/clientes`).then((response) => {
+    axios.get(`${BASE_URL}/clientes`).then((response) => {
       setDadosCliente(response.data);
     });
   }, []);
@@ -247,7 +246,7 @@ function CadastroPet() {
                     Selecione uma raça
                   </option>
                   {dadosRaca && dadosRaca.map((dado) => (
-                    <option key={dado.id} value={dado.id}>
+                    <option key={dado.id} value={dado.nome}>
                       {dado.nome}
                     </option>
                   ))}

@@ -10,20 +10,18 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 // import '../custom.css';
 import axios from 'axios';
-//import { BASE_URL } from '../config/axios';
-import { BASE_URL2 } from '../config/axios';
+import { BASE_URL } from '../config/axios';
 
 function CadastroCliente() {
   const { idParam } = useParams();
 
   const navigate = useNavigate();
 
-  //const baseURL = `${BASE_URL}/Cliente`;
-  const baseURL2 = `${BASE_URL2}/clientes`;
+  const baseURL = `${BASE_URL}/clientes`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
+  const [dataNasc, setDataNasc] = useState('');
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
   const [celular, setCelular] = useState('');
@@ -42,7 +40,7 @@ function CadastroCliente() {
     if (idParam == null) {
       setId('');
       setNome('');
-      setDataNascimento('');
+      setDataNasc('');
       setCpf('');
       setEmail('');
       setCelular('');
@@ -57,7 +55,7 @@ function CadastroCliente() {
     } else {
       setId(dados.id);
       setNome(dados.nome);
-      setDataNascimento(dados.dataNascimento);
+      setDataNasc(dados.dataNasc);
       setCpf(dados.cpf);
       setEmail(dados.email);
       setCelular(dados.celular);
@@ -76,7 +74,7 @@ function CadastroCliente() {
     let data = {
       id,
       nome,
-      dataNascimento,
+      dataNasc,
       cpf,
       email,
       celular,
@@ -92,7 +90,7 @@ function CadastroCliente() {
     data = JSON.stringify(data);
     if (idParam == null) {
       await axios
-      .post(baseURL2, data, {
+      .post(baseURL, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -104,7 +102,7 @@ function CadastroCliente() {
         });
     } else {
       await axios
-        .put(`${baseURL2}/${idParam}`, data, {
+        .put(`${baseURL}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -119,12 +117,12 @@ function CadastroCliente() {
 
   async function buscar() {
     if (idParam != null) {
-      await axios.get(`${baseURL2}/${idParam}`).then((response) => {
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);
       setNome(dados.nome);
-      setDataNascimento(dados.dataNascimento);
+      setDataNasc(dados.dataNasc);
       setCpf(dados.cpf);
       setEmail(dados.email);
       setCelular(dados.celular);
@@ -136,7 +134,7 @@ function CadastroCliente() {
       setEstado(dados.estado);
       setCep(dados.cep);
       setFidelidade(dados.fidelidade);
-      console.log(dados.dataNascimento);
+      console.log(dados.dataNasc);
     }
   }
 
@@ -162,14 +160,14 @@ function CadastroCliente() {
                   onChange={(e) => setNome(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Data de Nascimento: *' htmlFor='inputDataNascimento'>
+              <FormGroup label='Data de Nascimento: *' htmlFor='inputDataNasc'>
                 <input
                   type='date'
-                  id='inputDataNascimento'
-                  value={dataNascimento}
+                  id='inputDataNasc'
+                  value={dataNasc}
                   className='form-control'
-                  name='dataNascimento'
-                  onChange={(e) => setDataNascimento(e.target.value)}
+                  name='dataNasc'
+                  onChange={(e) => setDataNasc(e.target.value)}
                 />
               </FormGroup>
               <FormGroup label='CPF: *' htmlFor='inputCpf'>

@@ -12,15 +12,15 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
-import { BASE_URL2 } from '../config/axios';
+// import { BASE_URL2 } from '../config/axios';
 
 function CadastroVenda() {
   const { idParam } = useParams();
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL2}/vendas`;
-  const baseURL2 = `${BASE_URL}/produtos`;
+  const baseURL = `${BASE_URL}/vendas`;
+  const baseURLProduto = `${BASE_URL}/produtos`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');

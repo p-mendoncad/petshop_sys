@@ -13,9 +13,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import axios from 'axios';
-import { BASE_URL3 } from '../config/axios';
+import { BASE_URL } from '../config/axios';
 
-const baseURL = `${BASE_URL3}/pets`;
+const baseURL = `${BASE_URL}/pets`;
 
 function ListagemPets() {
   const navigate = useNavigate();

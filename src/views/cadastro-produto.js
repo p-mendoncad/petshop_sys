@@ -13,7 +13,7 @@ import { BASE_URL } from '../config/axios';
 function CadastroProduto() {
   const { idParam } = useParams();
   const navigate = useNavigate();
-  const baseURL = `${BASE_URL}/Produtos`;
+  const baseURL = `${BASE_URL}/produtos`;
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');

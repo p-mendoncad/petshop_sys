@@ -12,15 +12,14 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
-import { BASE_URL3 } from '../config/axios';
 
 function CadastroRaca() {
   const { idParam } = useParams();
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/Raca`;
-  const baseURL3 = `${BASE_URL3}/racas`;
+  // const baseURL = `${BASE_URL}/Raca`;
+  const baseURL = `${BASE_URL}/racas`;
 
   const [id, setId] = useState('');
   const [animal, setAnimal] = useState('');
@@ -53,7 +52,7 @@ function CadastroRaca() {
     data = JSON.stringify(data);
     if (idParam == null) {
       await axios
-        .post(baseURL3, data, {
+        .post(baseURL, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -65,7 +64,7 @@ function CadastroRaca() {
         });
     } else {
       await axios
-        .put(`${baseURL3}/${idParam}`, data, {
+        .put(`${baseURL}/${idParam}`, data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((response) => {
@@ -80,7 +79,7 @@ function CadastroRaca() {
 
   async function buscar() {
     if (idParam != null) {
-      await axios.get(`${baseURL3}/${idParam}`).then((response) => {
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);

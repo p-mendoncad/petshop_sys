@@ -11,14 +11,14 @@ import { mensagemSucesso, mensagemErro } from '../components/toastr';
 // import '../custom.css';
 
 import axios from 'axios';
-import { BASE_URL3 } from '../config/axios';
+import { BASE_URL } from '../config/axios';
 
 function CadastroAgendamento() {
   const { idParam } = useParams();
 
   const navigate = useNavigate();
 
-  const baseURL3 = `${BASE_URL3}/Agendamentos`;
+  const baseURL = `${BASE_URL}/Agendamentos`;
 
   const [id, setId] = useState('');
   const [data, setData] = useState('');
@@ -63,7 +63,7 @@ function CadastroAgendamento() {
     dadosAgendamento = JSON.stringify(dadosAgendamento);
     if (idParam == null) {
       await axios
-        .post(baseURL3, dadosAgendamento, {
+        .post(baseURL, dadosAgendamento, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
@@ -75,7 +75,7 @@ function CadastroAgendamento() {
         });
     } else {
       await axios
-        .put(`${baseURL3}/${idParam}`, dadosAgendamento, {
+        .put(`${baseURL}/${idParam}`, dadosAgendamento, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
@@ -90,7 +90,7 @@ function CadastroAgendamento() {
 
   async function buscar() {
     if (idParam != null) {
-      await axios.get(`${baseURL3}/${idParam}`).then((response) => {
+      await axios.get(`${baseURL}/${idParam}`).then((response) => {
         setDados(response.data);
       });
       setId(dados.id);
@@ -105,14 +105,14 @@ function CadastroAgendamento() {
   const [dadosPets, setDadosPets] = React.useState(null);
 
   useEffect(() => {
-    axios.get(`${BASE_URL3}/pets`).then((response) => {
+    axios.get(`${BASE_URL}/pets`).then((response) => {
       setDadosPets(response.data);
     });
   }, []);
   const [dadosServicos, setDadosServicos] = React.useState(null);
 
   useEffect(() => {
-    axios.get(`${BASE_URL3}/servicos`).then((response) => {
+    axios.get(`${BASE_URL}/servicos`).then((response) => {
       setDadosServicos(response.data);
     });
   }, []);

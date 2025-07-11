@@ -13,9 +13,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import axios from 'axios';
-import { BASE_URL3 } from '../config/axios';
+import { BASE_URL } from '../config/axios';
 
-const baseURL = `${BASE_URL3}/agendamentos`;
+const baseURL = `${BASE_URL}/agendamentos`;
 
 function ListagemAgendamentos() {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ function ListagemAgendamentos() {
         mensagemErro(`Erro ao excluir o agendamento`);
       });
   }
-
+  
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
       setDados(response.data);
