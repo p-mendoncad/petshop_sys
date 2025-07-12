@@ -20,16 +20,14 @@ function CadastroPet() {
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
+  const [dataNasc, setDataNasc] = useState('');
   const [peso, setPeso] = useState('');
-  const [vacinaRaiva, setVacinaRaiva] = useState('');
+  // const [histoVac, setHistoVac] = useState('');
   const [sexo, setSexo] = useState('');
-  const [observacao, setObservacao] = useState('');
-  const [animal, setAnimal] = useState('');
-  const [nomeRaca, setNomeRaca] = useState('');
-  const [racaId, setRacaId] = useState('');
-  const [cliente, setCliente] = useState('');
-  const [clienteId, setClienteId] = useState('');
+  const [obs, setObs] = useState('');
+  const [idRaca, setIdRaca] = useState('');
+  const [idCliente, setIdCliente] = useState('');
+  const [histServ, setHistServ] = useState('');
 
   const [dados, setDados] = useState([]);
 
@@ -37,29 +35,25 @@ function CadastroPet() {
     if (idParam == null) {
       setId('');
       setNome('');
-      setDataNascimento('');
+      setDataNasc('');
       setPeso('');
-      setVacinaRaiva('');
+      // setHistoVac('');
       setSexo('');
-      setObservacao('');
-      setAnimal('');
-      setNomeRaca('');
-      setRacaId('');
-      setCliente('');
-      setClienteId('');
+      setObs('');
+      setIdRaca('');
+      setIdCliente('');
+      setHistServ('');
     } else {
       setId(dados.id);
       setNome(dados.nome);
-      setDataNascimento(dados.dataNascimento);
+      setDataNasc(dados.dataNasc);
       setPeso(dados.peso);
-      setVacinaRaiva(dados.vacinaRaiva);
+      // setHistoVac(dados.histoVac);
       setSexo(dados.sexo);
-      setObservacao(dados.observacao);
-      setAnimal(dados.animal);
-      setNomeRaca(dados.nomeRaca);
-      setRacaId(dados.racaId);
-      setCliente(dados.cliente);
-      setClienteId(dados.clienteId);
+      setObs(dados.obs);
+      setIdRaca(dados.idRaca);
+      setIdCliente(dados.idCliente);
+      setHistServ(dados.histServ);
 
     }
   }
@@ -68,16 +62,14 @@ function CadastroPet() {
     let data = {
       id,
       nome,
-      dataNascimento,
+      dataNasc,
       peso,
-      vacinaRaiva,
-      sexo,
-      observacao,
-      animal,
-      nomeRaca,
-      racaId,
-      cliente,
-      clienteId,
+      // histoVac,
+      sexo: sexo === 'M' ? true : false,
+      obs,
+      idRaca: Number(idRaca),
+      idCliente: Number(idCliente),
+      histServ,
     };
     data = JSON.stringify(data);
     if (idParam == null) {
@@ -90,6 +82,7 @@ function CadastroPet() {
           navigate(`/listagem-pets`);
         })
         .catch((error) => {
+          console.log('Erro completo:', error);
           mensagemErro(error.response.data);
         });
     } else {
@@ -114,19 +107,14 @@ function CadastroPet() {
       });
       setId(dados.id);
       setNome(dados.nome);
-      setDataNascimento(dados.dataNascimento);
+      setDataNasc(dados.dataNasc);
       setPeso(dados.peso);
-      setVacinaRaiva(dados.vacinaRaiva);
+      // setHistoVac(dados.histoVac);
       setSexo(dados.sexo);
-      setObservacao(dados.observacao);
-      setAnimal(dados.animal);
-      setNomeRaca(dados.nomeRaca);
-      setRacaId(dados.racaId);
-      setCliente(dados.cliente);
-      setClienteId(dados.clienteId);
-      console.log(dados.nome);
-      // console.log(dados.racaId); 
-      console.log(dados.cliente);
+      setObs(dados.obs);
+      setIdRaca(dados.idRaca);
+      setIdCliente(dados.idCliente);
+      setHistServ(dados.histServ);
     }
   }
 
@@ -168,14 +156,14 @@ function CadastroPet() {
                   onChange={(e) => setNome(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Data de Nascimento: *' htmlFor='inputDataNascimento'>
+              <FormGroup label='Data de Nascimento: *' htmlFor='inputDataNasc'>
                 <input
                   type='date'
-                  id='inputDataNascimento'
-                  value={dataNascimento}
+                  id='inputDataNasc'
+                  value={dataNasc}
                   className='form-control'
-                  name='dataNascimento'
-                  onChange={(e) => setDataNascimento(e.target.value)}
+                  name='dataNasc'
+                  onChange={(e) => setDataNasc(e.target.value)}
                 />
               </FormGroup>
               <FormGroup label='Peso (kg): *' htmlFor='inputPeso'>
@@ -189,19 +177,19 @@ function CadastroPet() {
                   onChange={(e) => setPeso(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Vacina Antirrábica: *' htmlFor='inputVacinaRaiva'>
+              {/* <FormGroup label='Histórico de Vacina: *' htmlFor='inputHistoVac'>
                 <select
-                  id='inputVacinaRaiva'
-                  value={vacinaRaiva}
+                  id='inputHistoVac'
+                  value={histoVac}
                   className='form-control'
-                  name='vacinaRaiva'
-                  onChange={(e) => setVacinaRaiva(e.target.value)}
+                  name='histoVac'
+                  onChange={(e) => setHistoVac(e.target.value)}
                 >
                   <option value=''>Selecione</option>
                   <option value='sim'>Sim</option>
                   <option value='nao'>Não</option>
                 </select>
-              </FormGroup>
+              </FormGroup> */}
               <FormGroup label='Sexo: *' htmlFor='inputSexo'>
                 <select
                   id='inputSexo'
@@ -211,27 +199,17 @@ function CadastroPet() {
                   onChange={(e) => setSexo(e.target.value)}
                 >
                   <option value=''>Selecione</option>
-                  <option value='M'>Macho</option>
-                  <option value='F'>Fêmea</option>
+                  <option value="true">Macho</option>
+                  <option value="false">Fêmea</option>
                 </select>
               </FormGroup>
-              <FormGroup label='Observações:' htmlFor='inputObservacao'>
+              <FormGroup label='Observações:' htmlFor='inputObs'>
                 <textarea
-                  id='inputObservacao'
-                  value={observacao}
+                  id='inputObs'
+                  value={obs}
                   className='form-control'
-                  name='observacao'
-                  onChange={(e) => setObservacao(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup label='Animal: *' htmlFor='inputAnimal'>
-                <input
-                  type='text'
-                  id='inputAnimal'
-                  value={animal}
-                  className='form-control'
-                  name='animal'
-                  onChange={(e) => setAnimal(e.target.value)}
+                  name='obs'
+                  onChange={(e) => setObs(e.target.value)}
                 />
               </FormGroup>
               <FormGroup label='Raça: *' htmlFor='selectRaca'>
@@ -239,14 +217,14 @@ function CadastroPet() {
                   className='form-select'
                   id='selectRaca'
                   name='raca'
-                  value={racaId}
-                  onChange={(e) => setRacaId(e.target.value)}
+                  value={idRaca}
+                  onChange={(e) => setIdRaca(e.target.value)}
                 >
                   <option key='0' value='0'>
                     Selecione uma raça
                   </option>
                   {dadosRaca && dadosRaca.map((dado) => (
-                    <option key={dado.id} value={dado.nome}>
+                    <option key={dado.id} value={dado.id}>
                       {dado.nome}
                     </option>
                   ))}
@@ -257,18 +235,28 @@ function CadastroPet() {
                   className='form-select'
                   id='selectCliente'
                   name='cliente'
-                  value={cliente}
-                  onChange={(e) => setCliente(e.target.value)}
+                  value={idCliente}
+                  onChange={(e) => setIdCliente(e.target.value)}
                 >
                   <option key='0' value='0'>
                     Selecione um cliente
                   </option>
                   {dadosCliente && dadosCliente.map((dado) => (
-                    <option key={dado.id} value={dado.nome}>
+                    <option key={dado.id} value={dado.id}>
                       {dado.nome}
                     </option>
                   ))}
                 </select>
+              </FormGroup>
+              <FormGroup label='Historico de Serviços:' htmlFor='inputHistServ'>
+                <input
+                  type='text'
+                  id='inputHistServ'
+                  value={histServ}
+                  className='form-control'
+                  name='histServ'
+                  onChange={(e) => setHistServ(e.target.value)}
+                />
               </FormGroup>
               <Stack spacing={1} padding={1} direction='row'>
                 <button

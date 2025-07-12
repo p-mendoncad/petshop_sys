@@ -77,7 +77,6 @@ function ListagemRacas() {
                   <tr>
                     <th scope='col'>Nome</th>
                     <th scope='col'>Animal</th>
-                    <th scope='col'>Porte</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -85,7 +84,6 @@ function ListagemRacas() {
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
                       <td>{dado.animal}</td>
-                      <td>{dado.porte}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton

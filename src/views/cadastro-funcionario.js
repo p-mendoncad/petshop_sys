@@ -23,10 +23,10 @@ function CadastroFuncionario() {
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
+  const [dataNasc, setDataNasc] = useState('');
   const [cpf, setCpf] = useState('');
-  const [email, setEmail] = useState('');
-  const [celular, setCelular] = useState('');
+  // const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
   const [logradouro, setLogradouro] = useState('');
   const [numero, setNumero] = useState('');
   const [complemento, setComplemento] = useState('');
@@ -34,8 +34,7 @@ function CadastroFuncionario() {
   const [cidade, setCidade] = useState('');
   const [estado, setEstado] = useState('');
   const [cep, setCep] = useState('');
-  const [cargoId, setCargoId] = useState(0);
-  const [cargo, setCargo] = useState('');
+  const [idCargo, setIdCargo] = useState(0);
 
   const [dados, setDados] = useState([]);
 
@@ -43,10 +42,10 @@ function CadastroFuncionario() {
     if (idParam == null) {
       setId('');
       setNome('');
-      setDataNascimento('');
+      setDataNasc('');
       setCpf('');
-      setEmail('');
-      setCelular('');
+      // setEmail('');
+      setTelefone('');
       setLogradouro('');
       setNumero('');
       setComplemento('');
@@ -54,15 +53,14 @@ function CadastroFuncionario() {
       setCidade('');
       setEstado('');
       setCep('');
-      setCargoId(0);
-      setCargo('');
+      setIdCargo(0);
     } else {
       setId(dados.id);
       setNome(dados.nome);
-      setDataNascimento(dados.dataNascimento);
+      setDataNasc(dados.dataNasc);
       setCpf(dados.cpf);
-      setEmail(dados.email);
-      setCelular(dados.celular);
+      // setEmail(dados.email);
+      setTelefone(dados.telefone);
       setLogradouro(dados.logradouro);
       setNumero(dados.numero);
       setComplemento(dados.complemento);
@@ -70,8 +68,7 @@ function CadastroFuncionario() {
       setCidade(dados.cidade);
       setEstado(dados.estado);
       setCep(dados.cep);
-      setCargoId(dados.cargoId);
-      setCargo(dados.cargo);
+      setIdCargo(dados.idCargo);
     }
   }
 
@@ -79,10 +76,10 @@ function CadastroFuncionario() {
     let data = {
       id,
       nome,
-      dataNascimento,
+      dataNasc,
       cpf,
-      email,
-      celular,
+      // email,
+      telefone,
       logradouro,
       numero,
       complemento,
@@ -90,8 +87,7 @@ function CadastroFuncionario() {
       cidade,
       estado,
       cep,
-      cargoId,
-      cargo,
+      idCargo,
     };
     data = JSON.stringify(data);
     if (idParam == null) {
@@ -128,10 +124,10 @@ function CadastroFuncionario() {
       });
       setId(dados.id);
       setNome(dados.nome);
-      setDataNascimento(dados.dataNascimento);
+      setDataNasc(dados.dataNasc);
       setCpf(dados.cpf);
-      setEmail(dados.email);
-      setCelular(dados.celular);
+      // setEmail(dados.email);
+      setTelefone(dados.telefone);
       setLogradouro(dados.logradouro);
       setNumero(dados.numero);
       setComplemento(dados.complemento);
@@ -139,8 +135,7 @@ function CadastroFuncionario() {
       setCidade(dados.cidade);
       setEstado(dados.estado);
       setCep(dados.cep);
-      setCargoId(dados.cargoId);
-      setCargo(dados.cargos);
+      setIdCargo(dados.idCargo);
     }
   }
 
@@ -174,14 +169,14 @@ function CadastroFuncionario() {
                   onChange={(e) => setNome(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Data de Nascimento: *' htmlFor='inputDataNascimento'>
+              <FormGroup label='Data de Nascimento: *' htmlFor='inputDataNasc'>
                 <input
                   type='date'
-                  id='inputDataNascimento'
-                  value={dataNascimento}
+                  id='inputDataNasc'
+                  value={dataNasc}
                   className='form-control'
-                  name='dataNascimento'
-                  onChange={(e) => setDataNascimento(e.target.value)}
+                  name='dataNasc'
+                  onChange={(e) => setDataNasc(e.target.value)}
                 />
               </FormGroup>
               <FormGroup label='CPF: *' htmlFor='inputCpf'>
@@ -194,7 +189,7 @@ function CadastroFuncionario() {
                   onChange={(e) => setCpf(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='E-mail: *' htmlFor='inputEmail'>
+              {/* <FormGroup label='E-mail: *' htmlFor='inputEmail'>
                 <input
                   type='email'
                   id='inputEmail'
@@ -203,15 +198,15 @@ function CadastroFuncionario() {
                   name='email'
                   onChange={(e) => setEmail(e.target.value)}
                 />
-              </FormGroup>
-              <FormGroup label='Celular: *' htmlFor='inputCelular'>
+              </FormGroup> */}
+              <FormGroup label='Telefone: *' htmlFor='inputTelefone'>
                 <input
                   type='text'
-                  id='inputCelular'
-                  value={celular}
+                  id='inputTelefone'
+                  value={telefone}
                   className='form-control'
-                  name='celular'
-                  onChange={(e) => setCelular(e.target.value)}
+                  name='telefone'
+                  onChange={(e) => setTelefone(e.target.value)}
                 />
               </FormGroup>
               <FormGroup label='Logradouro: *' htmlFor='inputLogradouro'>
@@ -289,8 +284,8 @@ function CadastroFuncionario() {
                   className='form-select'
                   id='selectCargos'
                   name='Cargos'
-                  value={cargoId}
-                  onChange={(e) => setCargoId(e.target.value)}  
+                  value={idCargo}
+                  onChange={(e) => setIdCargo(e.target.value)}  
                 >
                   <option key='0' value='0'>
                     Selecione um cargo

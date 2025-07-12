@@ -24,7 +24,6 @@ function CadastroRaca() {
   const [id, setId] = useState('');
   const [animal, setAnimal] = useState('');
   const [nome, setNome] = useState('');
-  const [porte, setPorte] = useState('');
 
   const [dados, setDados] = useState([]);
 
@@ -33,12 +32,10 @@ function CadastroRaca() {
       setId('');
       setAnimal('');
       setNome('');
-      setPorte('');
     } else {
       setId(dados.id);
       setAnimal(dados.animal);
       setNome(dados.nome);
-      setPorte(dados.porte);
     }
   }
 
@@ -47,7 +44,6 @@ function CadastroRaca() {
       id,
       animal,
       nome,
-      porte,
     };
     data = JSON.stringify(data);
     if (idParam == null) {
@@ -85,12 +81,11 @@ function CadastroRaca() {
       setId(dados.id);
       setAnimal(dados.animal);
       setNome(dados.nome);
-      setPorte(dados.porte);
     }
   }
 
   useEffect(() => {
-    buscar(); // eslint-disable-next-line
+    buscar(); 
   }, [id]);
 
   if (!dados) return null;
@@ -119,16 +114,6 @@ function CadastroRaca() {
                   className='form-control'
                   name='nome'
                   onChange={(e) => setNome(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup label='Porte (Pequeno, Médio, Grande): *' htmlFor='inputPorte'>
-                <input
-                  type='text'
-                  id='inputPorte'
-                  value={porte}
-                  className='form-control'
-                  name='porte'
-                  onChange={(e) => setPorte(e.target.value)}
                 />
               </FormGroup>
               <Stack spacing={1} padding={1} direction='row'>

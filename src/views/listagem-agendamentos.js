@@ -81,6 +81,7 @@ function ListagemAgendamentos() {
                     <th scope='col'>H. Saída</th>
                     <th scope='col'>Serviço</th>
                     <th scope='col'>Pet</th>
+                    <th scope='col'>Funcionário</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -92,6 +93,7 @@ function ListagemAgendamentos() {
                       <td>{dado.horaSaida}</td>
                       <td>{dado.servico}</td>
                       <td>{dado.pet}</td>
+                      <td>{dado.funcionario}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton

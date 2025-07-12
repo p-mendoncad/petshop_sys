@@ -78,7 +78,7 @@ function ListagemFornecedores() {
                         <th scope='col'>Nome</th>
                         <th scope='col'>CNPJ</th>
                         <th scope='col'>E-mail</th>
-                        <th scope='col'>Celular</th>
+                        <th scope='col'>Telefone</th>
                         {/* <th scope='col'>Logradouro</th>
                         <th scope='col'>Número</th>
                         <th scope='col'>Complemento</th>
@@ -87,7 +87,6 @@ function ListagemFornecedores() {
                         <th scope='col'>Estado</th> */}
                         <th scope='col'>CEP</th>
                         {/* <th scope='col'>Data de Cadastro</th> */}
-                        <th scope='col'>Tipo de Produto</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -96,7 +95,7 @@ function ListagemFornecedores() {
                       <td>{dado.nome}</td>
                       <td>{dado.cnpj}</td>
                       <td>{dado.email}</td>
-                      <td>{dado.celular}</td>
+                      <td>{dado.telefone}</td>
                       {/* <td>{dado.logradouro}</td>
                       <td>{dado.numero}</td>
                       <td>{dado.complemento}</td>
@@ -104,8 +103,7 @@ function ListagemFornecedores() {
                       <td>{dado.cidade}</td>
                       <td>{dado.estado}</td> */}
                       <td>{dado.cep}</td>
-                      {/* <td>{dado.dataCadastro}</td> */}
-                      <td>{dado.tipoProduto}</td>
+                      {/* <td>{dado.dataCad}</td> */}
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton

@@ -18,7 +18,7 @@ function CadastroAgendamento() {
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/Agendamentos`;
+  const baseURL = `${BASE_URL}/agendamentos`;
 
   const [id, setId] = useState('');
   const [data, setData] = useState('');
@@ -27,6 +27,7 @@ function CadastroAgendamento() {
   const [horaSaida, setHoraSaida] = useState('');
   const [servico, setServico] = useState('');
   const [pet, setPet] = useState('');
+  const [funcionario, setFuncionario] = useState('');
 
   const [dados, setDados] = React.useState([]);
 
@@ -39,6 +40,7 @@ function CadastroAgendamento() {
       setHoraSaida('');
       setServico('');
       setPet('');
+      setFuncionario('');
     } else {
       setId(dados.id);
       setData(dados.data);
@@ -47,6 +49,7 @@ function CadastroAgendamento() {
       setHoraSaida(dados.horaSaida);
       setServico(dados.servico);
       setPet(dados.pet);
+      setFuncionario(dados.funcionario);
     }
   }
 
@@ -59,6 +62,7 @@ function CadastroAgendamento() {
       horaSaida,
       servico,
       pet,
+      funcionario,
     };
     dadosAgendamento = JSON.stringify(dadosAgendamento);
     if (idParam == null) {
@@ -100,6 +104,7 @@ function CadastroAgendamento() {
       setHoraSaida(dados.horaSaida);
       setServico(dados.servico);
       setPet(dados.pet);
+      setFuncionario(dados.funcionario);
     }
   }
   const [dadosPets, setDadosPets] = React.useState(null);
@@ -114,6 +119,13 @@ function CadastroAgendamento() {
   useEffect(() => {
     axios.get(`${BASE_URL}/servicos`).then((response) => {
       setDadosServicos(response.data);
+    });
+  }, []);
+  const [dadosFuncionarios, setDadosFuncionarios] = React.useState(null);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/funcionarios`).then((response) => {
+      setDadosFuncionarios(response.data);
     });
   }, []);
 
@@ -182,6 +194,24 @@ function CadastroAgendamento() {
                     Selecione um pet
                   </option>
                   {dadosPets && dadosPets.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                      {dado.nome}
+                    </option>
+                  ))}
+                </select>
+              </FormGroup>
+              <FormGroup label='Funcionário: *' htmlFor='selectFuncionario'>
+                <select
+                  className='form-select'
+                  id='selectFuncionario'
+                  name='funcionario'
+                  value={funcionario}
+                  onChange={(e) => setPet(e.target.value)} 
+                >
+                  <option key='0' value='0'>
+                    Selecione um funcionário
+                  </option>
+                  {dadosFuncionarios && dadosFuncionarios.map((dado) => (
                     <option key={dado.id} value={dado.id}>
                       {dado.nome}
                     </option>

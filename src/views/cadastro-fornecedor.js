@@ -24,7 +24,7 @@
     const [nome, setNome] = useState('');
     const [cnpj, setCnpj] = useState('');
     const [email, setEmail] = useState('');
-    const [celular, setCelular] = useState('');
+    const [telefone, setTelefone] = useState('');
     const [logradouro, setLogradouro] = useState('');
     const [numero, setNumero] = useState('');
     const [complemento, setComplemento] = useState('');
@@ -32,9 +32,7 @@
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
     const [cep, setCep] = useState('');
-    const [dataCadastro, setDataCadastro] = useState('');
-    const [tipoProduto, setTipoProduto] = useState('');
-    const [estoqueId, setIdEstoque] = useState('');
+    const [dataCad, setDataCad] = useState('');
 
     const [dados, setDados] = useState([]);
 
@@ -44,7 +42,7 @@
         setNome('');
         setCnpj('');
         setEmail('');
-        setCelular('');
+        setTelefone('');
         setLogradouro('');
         setNumero('');
         setComplemento('');
@@ -52,15 +50,13 @@
         setCidade('');
         setEstado('');
         setCep('');
-        setDataCadastro('');
-        setTipoProduto('');
-        setIdEstoque('');
+        setDataCad('');
       } else {
         setId(dados.id);
         setNome(dados.nome);
         setCnpj(dados.cnpj);
         setEmail(dados.email);
-        setCelular(dados.celular);
+        setTelefone(dados.telefone);
         setLogradouro(dados.logradouro);
         setNumero(dados.numero);
         setComplemento(dados.complemento);
@@ -68,9 +64,7 @@
         setCidade(dados.cidade);
         setEstado(dados.estado);
         setCep(dados.cep);
-        setDataCadastro(dados.dataCadastro);
-        setTipoProduto(dados.tipoProduto);
-        setIdEstoque(dados.estoqueId);
+        setDataCad(dados.dataCad);
       }
     }
 
@@ -80,7 +74,7 @@
         nome,
         cnpj,
         email,
-        celular,
+        telefone,
         logradouro,
         numero,
         complemento,
@@ -88,9 +82,7 @@
         cidade,
         estado,
         cep,
-        dataCadastro,
-        tipoProduto,
-        estoqueId,
+        dataCad,
       };
       data = JSON.stringify(data);
       if (idParam == null) {
@@ -129,7 +121,7 @@
         setNome(dados.nome);
         setCnpj(dados.cnpj);
         setEmail(dados.email);
-        setCelular(dados.celular);
+        setTelefone(dados.telefone);
         setLogradouro(dados.logradouro);
         setNumero(dados.numero);
         setComplemento(dados.complemento);
@@ -137,20 +129,10 @@
         setCidade(dados.cidade);
         setEstado(dados.estado);
         setCep(dados.cep);
-        setDataCadastro(dados.dataCadastro);
-        setTipoProduto(dados.tipoProduto);
-        setIdEstoque(dados.estoqueId);
+        setDataCad(dados.dataCad);
       }
     }
     
-    const [dadosEstoque, setDadosEstoque] = React.useState(null);
-
-    useEffect(() => {
-      axios.get(`${BASE_URL}/estoques`).then((response) => {
-        setDadosEstoque(response.data);
-      });
-    }, []);
-
     useEffect(() => {
       buscar(); // eslint-disable-next-line
     }, [id]);
@@ -193,14 +175,14 @@
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </FormGroup>
-                <FormGroup label='Celular: *' htmlFor='inputCelular'>
+                <FormGroup label='Telefone: *' htmlFor='inputTelefone'>
                   <input
                     type='text'
-                    id='inputCelular'
-                    value={celular}
+                    id='inputTelefone'
+                    value={telefone}
                     className='form-control'
-                    name='celular'
-                    onChange={(e) => setCelular(e.target.value)}
+                    name='telefone'
+                    onChange={(e) => setTelefone(e.target.value)}
                   />
                 </FormGroup>
                 <FormGroup label='Logradouro: *' htmlFor='inputLogradouro'>
@@ -273,34 +255,16 @@
                     onChange={(e) => setCep(e.target.value)}
                   />
                 </FormGroup>
-                <FormGroup label='Data de Cadastro: *' htmlFor='inputDataCadastro'>
+                {/* <FormGroup label='Data de Cadastro: *' htmlFor='inputDataCad'>
                   <input
                     type='date'
-                    id='inputDataCadastro'
-                    value={dataCadastro}
+                    id='inputDataCad'
+                    value={dataCad}
                     className='form-control'
-                    name='dataCadastro'
-                    onChange={(e) => setDataCadastro(e.target.value)}
+                    name='dataCad'
+                    onChange={(e) => setDataCad(e.target.value)}
                   />
-                </FormGroup>
-                <FormGroup label='Estoque: *' htmlFor='selectEstoque'>
-                  <select
-                    className='form-select'
-                    id='selectEstoque'
-                    name='estoque'
-                    value={tipoProduto}
-                    onChange={(e) => setTipoProduto(e.target.value)}
-                  >
-                    <option key='0' value='0'>
-                      Selecione um setor do estoque
-                    </option>
-                    {dadosEstoque && dadosEstoque.map((dado) => (
-                      <option key={dado.id} value={dado.id}>
-                        {dado.descricao}
-                      </option>
-                    ))}
-                  </select>
-                </FormGroup>
+                </FormGroup> */}
                 <Stack spacing={1} padding={1} direction='row'>
                   <button
                     onClick={salvar}

@@ -24,7 +24,7 @@ function CadastroCliente() {
   const [dataNasc, setDataNasc] = useState('');
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
-  const [celular, setCelular] = useState('');
+  const [telefone, setTelefone] = useState('');
   const [logradouro, setLogradouro] = useState('');
   const [numero, setNumero] = useState('');
   const [complemento, setComplemento] = useState('');
@@ -32,7 +32,6 @@ function CadastroCliente() {
   const [cidade, setCidade] = useState('');
   const [estado, setEstado] = useState('');
   const [cep, setCep] = useState('');
-  const [fidelidade, setFidelidade] = useState(0);
 
   const [dados, setDados] = useState([]);
 
@@ -43,7 +42,7 @@ function CadastroCliente() {
       setDataNasc('');
       setCpf('');
       setEmail('');
-      setCelular('');
+      setTelefone('');
       setLogradouro('');
       setNumero('');
       setComplemento('');
@@ -51,14 +50,13 @@ function CadastroCliente() {
       setCidade('');
       setEstado('');
       setCep('');
-      setFidelidade(0);
     } else {
       setId(dados.id);
       setNome(dados.nome);
       setDataNasc(dados.dataNasc);
       setCpf(dados.cpf);
       setEmail(dados.email);
-      setCelular(dados.celular);
+      setTelefone(dados.telefone);
       setLogradouro(dados.logradouro);
       setNumero(dados.numero);
       setComplemento(dados.complemento);
@@ -66,7 +64,6 @@ function CadastroCliente() {
       setCidade(dados.cidade);
       setEstado(dados.estado);
       setCep(dados.cep);
-      setFidelidade(dados.fidelidade);
     }
   }
 
@@ -77,7 +74,7 @@ function CadastroCliente() {
       dataNasc,
       cpf,
       email,
-      celular,
+      telefone,
       logradouro,
       numero,
       complemento,
@@ -85,7 +82,6 @@ function CadastroCliente() {
       cidade,
       estado,
       cep,
-      fidelidade,
     };
     data = JSON.stringify(data);
     if (idParam == null) {
@@ -125,7 +121,7 @@ function CadastroCliente() {
       setDataNasc(dados.dataNasc);
       setCpf(dados.cpf);
       setEmail(dados.email);
-      setCelular(dados.celular);
+      setTelefone(dados.telefone);
       setLogradouro(dados.logradouro);
       setNumero(dados.numero);
       setComplemento(dados.complemento);
@@ -133,7 +129,6 @@ function CadastroCliente() {
       setCidade(dados.cidade);
       setEstado(dados.estado);
       setCep(dados.cep);
-      setFidelidade(dados.fidelidade);
       console.log(dados.dataNasc);
     }
   }
@@ -190,14 +185,14 @@ function CadastroCliente() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Celular: *' htmlFor='inputCelular'>
+              <FormGroup label='Telefone: *' htmlFor='inputTelefone'>
                 <input
                   type='text'
-                  id='inputCelular'
-                  value={celular}
+                  id='inputTelefone'
+                  value={telefone}
                   className='form-control'
-                  name='celular'
-                  onChange={(e) => setCelular(e.target.value)}
+                  name='telefone'
+                  onChange={(e) => setTelefone(e.target.value)}
                 />
               </FormGroup>
               <FormGroup label='Logradouro: *' htmlFor='inputLogradouro'>
@@ -268,16 +263,6 @@ function CadastroCliente() {
                   className='form-control'
                   name='cep'
                   onChange={(e) => setCep(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup label='Pontos de Fidelidade:' htmlFor='inputFidelidade'>
-                <input
-                  type='number'
-                  id='inputFidelidade'
-                  value={fidelidade}
-                  className='form-control'
-                  name='fidelidade'
-                  onChange={(e) => setFidelidade(e.target.value)}
                 />
               </FormGroup>
               <Stack spacing={1} padding={1} direction='row'>

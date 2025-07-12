@@ -78,26 +78,26 @@ function ListagemPets() {
                     <th scope='col'>Nome</th>
                     <th scope='col'>Dt. Nascimento</th>
                     <th scope='col'>Peso(kg)</th>
-                    <th scope='col'>Vac. Raiva</th>
+                    {/* <th scope='col'>Histórico Vac.</th> */}
                     <th scope='col'>Observações</th>
                     <th scope='col'>Sexo</th>
-                    <th scope='col'>Animal</th>
                     <th scope='col'>Raça</th>
                     <th scope='col'>Cliente</th>
+                    <th scope='col'>Histórico Serv.</th>
                   </tr>
                 </thead>
                 <tbody>
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.dataNascimento}</td>
+                      <td>{dado.dataNasc}</td>
                       <td>{dado.peso}</td>
-                      <td>{dado.vacinaRaiva}</td>
-                      <td>{dado.observacao}</td>
-                      <td>{dado.sexo}</td>
-                      <td>{dado.animal}</td>
-                      <td>{dado.nomeRaca}</td>
-                      <td>{dado.cliente}</td>
+                      {/* <td>{dado.histoVac}</td> */}
+                      <td>{dado.obs}</td>
+                      <td>{dado.sexo ? 'Macho' : 'Fêmea'}</td>
+                      <td>{dado.idRaca}</td>
+                      <td>{dado.idCliente}</td>
+                      <td>{dado.histServ}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton
