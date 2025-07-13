@@ -87,6 +87,7 @@ function ListagemFuncionarios() {
                         <th scope='col'>Cidade</th>
                         <th scope='col'>Estado</th> */}
                         <th scope='col'>CEP</th>
+                        <th scope='col'>Ações</th>
                         {/* <th scope='col'>Data de Cadastro</th>*/}
                   </tr>
                 </thead>
@@ -94,7 +95,7 @@ function ListagemFuncionarios() {
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.idCargo}</td>
+                      <td>{dado.nomeCargo}</td>
                       <td>{dado.cpf}</td>
                       {/* <td>{dado.email}</td> */}
                       <td>{dado.telefone}</td>

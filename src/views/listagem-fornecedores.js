@@ -86,6 +86,7 @@ function ListagemFornecedores() {
                         <th scope='col'>Cidade</th>
                         <th scope='col'>Estado</th> */}
                         <th scope='col'>CEP</th>
+                        <th scope='col'>Ações</th>
                         {/* <th scope='col'>Data de Cadastro</th> */}
                   </tr>
                 </thead>

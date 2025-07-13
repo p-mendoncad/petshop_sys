@@ -75,25 +75,26 @@ function ListagemVendas() {
               <table className='table table-hover'>
                 <thead>
                   <tr>
-                        <th scope='col'>Nome</th>
+                        <th scope='col'>Produto</th>
                         <th scope='col'>Quantidade</th>
                         <th scope='col'>Valor Unitário</th>
                         <th scope='col'>Valor Total</th>
-                        <th scope='col'>Forma de Pagamento</th>
+                        <th scope='col'>Cliente</th>
+                        <th scope='col'>Ações</th>
                         {/* <th scope='col'>Data de Cadastro</th> */}
-                        <th scope='col'>CPF do Cliente</th>
+                        {/* <th scope='col'>CPF do Cliente</th> */}
                   </tr>
                 </thead>
                 <tbody>
                   {dados.map((dado) => (
                     <tr key={dado.id}>
-                      <td>{dado.nome}</td>
-                      <td>{dado.quantidade}</td>
-                      <td>R$ {parseFloat(dado.valorUnitario).toFixed(2)}</td>
-                      <td>R$ {parseFloat(dado.valorTotal).toFixed(2)}</td>
-                      <td>{dado.formaPagamento}</td>
+                      <td>{dado.nomeProduto}</td>
+                      <td>{dado.quantidadeProduto}</td>
+                      <td>R$ {parseFloat(dado.precoProduto).toFixed(2)}</td>
+                      <td>R$ {parseFloat(dado.subtotalProduto).toFixed(2)}</td>
+                      <td>{dado.nomeCliente}</td>
                       {/* <td>{dado.dataCadastro}</td> */}
-                      <td>{dado.cpfCliente}</td>
+                      {/* <td>{dado.cpfCliente}</td> */}
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton

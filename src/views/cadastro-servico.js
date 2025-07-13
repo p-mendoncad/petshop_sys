@@ -21,8 +21,9 @@ function CadastroServico() {
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
-  const [duracao, setDuracao] = useState('');
+  const [duracaoMinutos, setDuracaoMinutos] = useState('');
   const [preco, setPreco] = useState('');
+  const [idCargo, setIdCargo] = useState('');
 
   const [dados, setDados] = useState([]);
 
@@ -30,13 +31,15 @@ function CadastroServico() {
     if (idParam == null) {
       setId('');
       setNome('');
-      setDuracao('');
+      setDuracaoMinutos('');
       setPreco('');
+      setIdCargo('');
     } else {
       setId(dados.id);
       setNome(dados.nome);
-      setDuracao(dados.duracao);
+      setDuracaoMinutos(dados.duracaoMinutos);
       setPreco(dados.preco);
+      setIdCargo(dados.IdCargo);
     }
   }
 
@@ -44,8 +47,9 @@ function CadastroServico() {
     let data = {
       id,
       nome,
-      duracao,
+      duracaoMinutos,
       preco,
+      idCargo,
     };
     data = JSON.stringify(data);
     if (idParam == null) {
@@ -82,13 +86,23 @@ function CadastroServico() {
       });
       setId(dados.id);
       setNome(dados.nome);
-      setDuracao(dados.duracao);
+      setDuracaoMinutos(dados.duracaoMinutos);
       setPreco(dados.preco);
+      setIdCargo(dados.idCargo);
     }
   }
 
+
+    const [dadosCargos, setDadosCargos] = React.useState(null);
+  
+    useEffect(() => {
+      axios.get(`${BASE_URL}/cargos`).then((response) => {
+        setDadosCargos(response.data);
+      });
+    }, []);
+
   useEffect(() => {
-    buscar(); // eslint-disable-next-line
+    buscar();
   }, [id]);
 
   if (!dados) return null;
@@ -109,14 +123,14 @@ function CadastroServico() {
                   onChange={(e) => setNome(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Duração (em minutos): *' htmlFor='inputDuracao'>
+              <FormGroup label='Duração (em minutos): *' htmlFor='inputDuracaoMinutos'>
                 <input
                   type='number'
-                  id='inputDuracao'
-                  value={duracao}
+                  id='inputDuracaoMinutos'
+                  value={duracaoMinutos}
                   className='form-control'
-                  name='duracao'
-                  onChange={(e) => setDuracao(e.target.value)}
+                  name='duracaoMinutos'
+                  onChange={(e) => setDuracaoMinutos(e.target.value)}
                 />
               </FormGroup>
               <FormGroup label='Preço (R$): *' htmlFor='inputPreco'>
@@ -128,6 +142,24 @@ function CadastroServico() {
                   name='preco'
                   onChange={(e) => setPreco(e.target.value)}
                 />
+              </FormGroup>
+              <FormGroup label='Cargos: *' htmlFor='selectCargos'>
+                <select
+                  className='form-select'
+                  id='selectCargos'
+                  name='Cargos'
+                  value={idCargo}
+                  onChange={(e) => setIdCargo(e.target.value)}  
+                >
+                  <option key='0' value='0'>
+                    Selecione um cargo
+                  </option>
+                  {dadosCargos && dadosCargos.map((dado) => (
+                    <option key={dado.id} value={dado.id}>
+                      {dado.nome}
+                    </option>
+                  ))}
+                </select>
               </FormGroup>
               <Stack spacing={1} padding={1} direction='row'>
                 <button

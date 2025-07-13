@@ -25,9 +25,9 @@ function CadastroAgendamento() {
   const [horario, setHorario] = useState('');
   const [horaEntrada, setHoraEntrada] = useState('');
   const [horaSaida, setHoraSaida] = useState('');
-  const [servico, setServico] = useState('');
-  const [pet, setPet] = useState('');
-  const [funcionario, setFuncionario] = useState('');
+  const [idServico, setIdServico] = useState('');
+  const [idPet, setIdPet] = useState('');
+  const [idFuncionario, setIdFuncionario] = useState('');
 
   const [dados, setDados] = React.useState([]);
 
@@ -38,18 +38,18 @@ function CadastroAgendamento() {
       setHorario('');
       setHoraEntrada('');
       setHoraSaida('');
-      setServico('');
-      setPet('');
-      setFuncionario('');
+      setIdServico('');
+      setIdPet('');
+      setIdFuncionario('');
     } else {
       setId(dados.id);
       setData(dados.data);
       setHorario(dados.horario);
       setHoraEntrada(dados.horaEntrada);
       setHoraSaida(dados.horaSaida);
-      setServico(dados.servico);
-      setPet(dados.pet);
-      setFuncionario(dados.funcionario);
+      setIdServico(dados.idServico);
+      setIdPet(dados.idPet);
+      setIdFuncionario(dados.idFuncionario);
     }
   }
 
@@ -60,9 +60,9 @@ function CadastroAgendamento() {
       horario,
       horaEntrada,
       horaSaida,
-      servico,
-      pet,
-      funcionario,
+      idServico,
+      idPet,
+      idFuncionario,
     };
     dadosAgendamento = JSON.stringify(dadosAgendamento);
     if (idParam == null) {
@@ -71,7 +71,7 @@ function CadastroAgendamento() {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
-          mensagemSucesso(`Agendamento ${servico} cadastrada com sucesso!`);
+          mensagemSucesso(`Agendamento ${idServico} cadastrada com sucesso!`);
           navigate(`/listagem-agendamentos`);
         })
         .catch(function (error) {
@@ -83,7 +83,7 @@ function CadastroAgendamento() {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
-          mensagemSucesso(`Agendamento ${servico} alterada com sucesso!`);
+          mensagemSucesso(`Agendamento ${idServico} alterada com sucesso!`);
           navigate(`/listagem-agendamentos`);
         })
         .catch(function (error) {
@@ -102,9 +102,9 @@ function CadastroAgendamento() {
       setHorario(dados.horario);
       setHoraEntrada(dados.horaEntrada);
       setHoraSaida(dados.horaSaida);
-      setServico(dados.servico);
-      setPet(dados.pet);
-      setFuncionario(dados.funcionario);
+      setIdServico(dados.idServico);
+      setIdPet(dados.idPet);
+      setIdFuncionario(dados.idFuncionario);
     }
   }
   const [dadosPets, setDadosPets] = React.useState(null);
@@ -145,9 +145,9 @@ function CadastroAgendamento() {
                 <select
                   className='form-select'
                   id='selectServico'
-                  name='servico'
-                  value={servico}
-                  onChange={(e) => setServico(e.target.value)} 
+                  name='idServico'
+                  value={idServico}
+                  onChange={(e) => setIdServico(e.target.value)} 
                 >
                   <option key='0' value='0'>
                     Selecione um serviço
@@ -182,16 +182,16 @@ function CadastroAgendamento() {
                   onChange={(e) => setHorario(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup label='Pet: *' htmlFor='selectPet'>
+              <FormGroup label='Pet: *' htmlFor='selectIdPet'>
                 <select
                   className='form-select'
-                  id='selectPet'
-                  name='pet'
-                  value={pet}
-                  onChange={(e) => setPet(e.target.value)} 
+                  id='selectIdPet'
+                  name='Pet'
+                  value={idPet}
+                  onChange={(e) => setIdPet(e.target.value)} 
                 >
                   <option key='0' value='0'>
-                    Selecione um pet
+                    Selecione um Pet
                   </option>
                   {dadosPets && dadosPets.map((dado) => (
                     <option key={dado.id} value={dado.id}>
@@ -200,16 +200,16 @@ function CadastroAgendamento() {
                   ))}
                 </select>
               </FormGroup>
-              <FormGroup label='Funcionário: *' htmlFor='selectFuncionario'>
+              <FormGroup label='Funcionário: *' htmlFor='selectIdFuncionario'>
                 <select
                   className='form-select'
-                  id='selectFuncionario'
-                  name='funcionario'
-                  value={funcionario}
-                  onChange={(e) => setPet(e.target.value)} 
+                  id='selectIdFuncionario'
+                  name='Funcionario'
+                  value={idFuncionario}
+                  onChange={(e) => setIdFuncionario(e.target.value)} 
                 >
                   <option key='0' value='0'>
-                    Selecione um funcionário
+                    Selecione um Funcionário
                   </option>
                   {dadosFuncionarios && dadosFuncionarios.map((dado) => (
                     <option key={dado.id} value={dado.id}>
@@ -218,7 +218,7 @@ function CadastroAgendamento() {
                   ))}
                 </select>
               </FormGroup>
-              <FormGroup label='Hora de entrada: *' htmlFor='inputHoraEntrada'>
+              <FormGroup label='Hora de entrada:' htmlFor='inputHoraEntrada'>
                 <input
                   type='text'
                   id='inputHoraEntrada'
@@ -229,7 +229,7 @@ function CadastroAgendamento() {
                 />
               </FormGroup>
 
-              <FormGroup label='Hora de saída: *' htmlFor='inputHoraSaida'>
+              <FormGroup label='Hora de saída:' htmlFor='inputHoraSaida'>
                 <input
                   type='text'
                   id='inputHoraSaida'

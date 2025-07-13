@@ -20,18 +20,15 @@ function CadastroProduto() {
   const [precoVenda, setPrecoVenda] = useState('');
   const [quantidade, setQuantidade] = useState('');
   const [descricao, setDescricao] = useState('');
-  const [quantMin, setQuantMin] = useState('');
-  const [quantMax, setQuantMax] = useState('');
-  // const [lote, setLote] = useState('');
-  // const [vencimento, setVencimento] = useState('');
-  const [codigo, setCodigo] = useState('');
-  const [perecibilidade, setPerecibilidade] = useState(false);
+  const [quantidadeMin, setQuantidadeMin] = useState('');
   const [dataEntrada, setDataEntrada] = useState('');
-  const [uniMedida, setUniMedida] = useState('');
-  // const [precoCompra, setPrecoCompra] = useState('');
+  const [unidadeMedida, setUnidadeMedida] = useState('');
+  const [precoCompra, setPrecoCompra] = useState('');
+  const [lote, setLote] = useState('');
+  const [vencimento, setVencimento] = useState('');
   const [codBarras, setCodBarras] = useState('');
-  // const [idFornecedor, setIdFornecedor] = useState('');
   const [idSetor, setIdSetor] = useState('');
+  const [idFornecedor, setIdFornecedor] = useState('');
 
   async function salvar() {
     const data = {
@@ -40,17 +37,14 @@ function CadastroProduto() {
       precoVenda,
       quantidade,
       descricao,
-      quantMin,
-      quantMax,
-      // lote,
-      // vencimento,
-      codigo,
-      perecibilidade,
+      quantidadeMin,
       dataEntrada,
-      uniMedida,
-      // precoCompra,
+      unidadeMedida,
+      precoCompra,
+      lote,
+      vencimento,
       codBarras,
-      // idFornecedor,
+      idFornecedor,
       idSetor,
     };
 
@@ -78,17 +72,15 @@ function CadastroProduto() {
         setPrecoVenda(produto.precoVenda);
         setQuantidade(produto.quantidade);
         setDescricao(produto.descricao);
-        setQuantMin(produto.quantMin);
-        setQuantMax(produto.quantMax);
-        // setLote(produto.lote);
-        // setVencimento(produto.vencimento);
-        setCodigo(produto.codigo);
-        setPerecibilidade(produto.perecibilidade);
+        setQuantidadeMin(produto.quantidadeMin);
         setDataEntrada(produto.dataEntrada);
-        setUniMedida(produto.uniMedida);
-        // setPrecoCompra(produto.precoCompra);
+        setUnidadeMedida(produto.unidadeMedida);
+        setPrecoCompra(produto.precoCompra);
+        setLote(produto.lote);
+        setVencimento(produto.vencimento);
+        setPrecoCompra(produto.precoCompra);
         setCodBarras(produto.codBarras);  
-        // setIdFornecedor(produto.idFornecedor);
+        setIdFornecedor(produto.idFornecedor);
         setIdSetor(produto.idSetor);
       } catch (error) {
         mensagemErro('Erro ao buscar o produto.');
@@ -103,11 +95,11 @@ function CadastroProduto() {
       setDadosFornecedores(response.data);
     });
   }, []);
-  const [dadosEstoques, setDadosEstoques] = React.useState(null);
+  const [dadosSetores, setDadosSetores] = React.useState(null);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/estoques`).then((response) => {
-      setDadosEstoques(response.data);
+    axios.get(`${BASE_URL}/setores`).then((response) => {
+      setDadosSetores(response.data);
     });
   }, []);
 
@@ -160,27 +152,17 @@ function CadastroProduto() {
                 />
               </FormGroup>
 
-              <FormGroup label='Quantidade Mínima:' htmlFor='inputQuantMin'>
+              <FormGroup label='Quantidade Mínima:' htmlFor='inputQuantidadeMin'>
                 <input
                   type='number'
-                  id='inputQuantMin'
-                  value={quantMin}
+                  id='inputQuantidadeMin'
+                  value={quantidadeMin}
                   className='form-control'
-                  onChange={(e) => setQuantMin(e.target.value)}
+                  onChange={(e) => setQuantidadeMin(e.target.value)}
                 />
               </FormGroup>
 
-              <FormGroup label='Quantidade Máxima:' htmlFor='inputQuantMax'>
-                <input
-                  type='number'
-                  id='inputQuantMax'
-                  value={quantMax}
-                  className='form-control'
-                  onChange={(e) => setQuantMax(e.target.value)}
-                />
-              </FormGroup>
-
-              {/* <FormGroup label='Lote:' htmlFor='inputLote'>
+              <FormGroup label='Lote:' htmlFor='inputLote'>
                 <input
                   type='text'
                   id='inputLote'
@@ -188,9 +170,9 @@ function CadastroProduto() {
                   className='form-control'
                   onChange={(e) => setLote(e.target.value)}
                 />
-              </FormGroup> */}
+              </FormGroup>
 
-              {/* <FormGroup label='Data de Vencimento:' htmlFor='inputVencimento'>
+              <FormGroup label='Data de Vencimento:' htmlFor='inputVencimento'>
                 <input
                   type='date'
                   id='inputVencimento'
@@ -198,28 +180,9 @@ function CadastroProduto() {
                   className='form-control'
                   onChange={(e) => setVencimento(e.target.value)}
                 />
-              </FormGroup> */}
-
-              {/* <FormGroup label='Código:' htmlFor='inputCodigo'>
-                <input
-                  type='text'
-                  id='inputCodigo'
-                  value={codigo}
-                  className='form-control'
-                  onChange={(e) => setCodigo(e.target.value)}
-                />
-              </FormGroup> */}
-
-              <FormGroup label='Perecibilidade:' htmlFor='inputPerecibilidade'>
-                <input
-                  type='checkbox'
-                  id='inputPerecibilidade'
-                  checked={perecibilidade}
-                  onChange={(e) => setPerecibilidade(e.target.checked)}
-                />
               </FormGroup>
 
-              {/* <FormGroup label='Data de Entrada:' htmlFor='inputDataEntrada'>
+              <FormGroup label='Data de Entrada:' htmlFor='inputDataEntrada'>
                 <input
                   type='date'
                   id='inputDataEntrada'
@@ -227,19 +190,19 @@ function CadastroProduto() {
                   className='form-control'
                   onChange={(e) => setDataEntrada(e.target.value)}
                 />
-              </FormGroup> */}
+              </FormGroup>
 
-              <FormGroup label='Unidade de Medida:' htmlFor='inputUniMedida'>
+              <FormGroup label='Unidade de Medida:' htmlFor='inputUnidadeMedida'>
                 <input
                   type='text'
-                  id='inputUniMedida'
-                  value={uniMedida}
+                  id='inputUnidadeMedida'
+                  value={unidadeMedida}
                   className='form-control'
-                  onChange={(e) => setUniMedida(e.target.value)}
+                  onChange={(e) => setUnidadeMedida(e.target.value)}
                 />
               </FormGroup>
 
-              {/* <FormGroup label='Preço de Compra:' htmlFor='inputPrecoCompra'>
+              <FormGroup label='Preço de Compra:' htmlFor='inputPrecoCompra'>
                 <input
                   type='number'
                   id='inputPrecoCompra'
@@ -247,7 +210,7 @@ function CadastroProduto() {
                   className='form-control'
                   onChange={(e) => setPrecoCompra(e.target.value)}
                 />
-              </FormGroup> */}
+              </FormGroup>
 
               <FormGroup label='Código de Barras:' htmlFor='inputCodBarras'>
                 <input
@@ -258,13 +221,13 @@ function CadastroProduto() {
                   onChange={(e) => setCodBarras(e.target.value)}
                 />
               </FormGroup>
-              {/* <FormGroup label='Fornecedor: *' htmlFor='selectFornecedor'>
+              <FormGroup label='Fornecedor: *' htmlFor='selectFornecedor'>
                 <select
                   className='form-select'
                   id='selectFornecedor'
                   name='fornecedor'
                   value={idFornecedor}
-                  onChange={(e) => setIdFornecedor(e.target.value)}  // Use 'setServico' aqui
+                  onChange={(e) => setIdFornecedor(e.target.value)}  
                 >
                   <option key='0' value='0'>
                     Selecione um fornecedor
@@ -275,7 +238,7 @@ function CadastroProduto() {
                     </option>
                   ))}
                 </select>
-              </FormGroup> */}
+              </FormGroup>
               <FormGroup label='Setor: *' htmlFor='selectSetor'>
                 <select
                   className='form-select'
@@ -287,9 +250,9 @@ function CadastroProduto() {
                   <option key='0' value='0'>
                     Selecione um setor
                   </option>
-                  {dadosEstoques && dadosEstoques.map((dado) => (
+                  {dadosSetores && dadosSetores.map((dado) => (
                     <option key={dado.id} value={dado.id}>
-                      {dado.descricao}
+                      {dado.nome}
                     </option>
                   ))}
                 </select>
@@ -303,7 +266,7 @@ function CadastroProduto() {
                   Salvar
                 </button>
                 <button
-                  onClick={() => navigate('/listagem-racas')}
+                  onClick={() => navigate('/listagem-produtos')}
                   type='button'
                   className='btn btn-danger'
                 >

@@ -90,6 +90,7 @@ function ListagemProdutos() {
                     {/* <th scope='col'>Cód. Barras</th> */}
                     {/* <th scope='col'>Fornecedor</th> */}
                     <th scope='col'>Setor</th>
+                    <th scope='col'>Ações</th>
 
                     
 
@@ -102,11 +103,11 @@ function ListagemProdutos() {
                       <td>R$ {parseFloat(dado.precoVenda).toFixed(2)}</td>
                       <td>{dado.quantidade}</td>
                       <td>{dado.descricao}</td>
-                      <td>{dado.quantMin}</td>
+                      <td>{dado.quantidadeMin}</td>
                        {/*<td>{dado.vencimento}</td>
                       <td>{dado.dataEntrada}</td>
                       <td>{dado.precoCompra}</td> */}
-                      <td>{dado.idSetor}</td>
+                      <td>{dado.nomeSetor}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton

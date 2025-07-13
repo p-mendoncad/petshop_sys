@@ -18,31 +18,27 @@ function CadastroEstoque() {
 
   const navigate = useNavigate();
 
-  const baseURL = `${BASE_URL}/estoques`;
+  const baseURL = `${BASE_URL}/setores`;
 
   const [id, setId] = useState('');
-  const [setor, setSetor] = useState(0);
-  const [descricao, setDescricao] = useState('');
+  const [nome, setNome] = useState('');
 
   const [dados, setDados] = React.useState([]);
 
   function inicializar() {
     if (idParam == null) {
       setId('');
-      setSetor(0);
-      setDescricao('');
+      setNome('');
     } else {
       setId(dados.id);
-      setSetor(dados.setor);
-      setDescricao(dados.descricao);
+      setNome(dados.nome);
     }
   }
 
   async function salvar() {
     let data = {
       id,
-      setor,
-      descricao
+      nome,
     };
     data = JSON.stringify(data);
     if (idParam == null) {
@@ -51,7 +47,7 @@ function CadastroEstoque() {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
-          mensagemSucesso(`Setor ${setor} cadastrada com sucesso!`);
+          mensagemSucesso(`Setor ${nome} cadastrada com sucesso!`);
           navigate(`/listagem-estoques`);
         })
         .catch(function (error) {
@@ -63,7 +59,7 @@ function CadastroEstoque() {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
-          mensagemSucesso(`Setor ${setor} alterada com sucesso!`);
+          mensagemSucesso(`Setor ${nome} alterada com sucesso!`);
           navigate(`/listagem-estoques`);
         })
         .catch(function (error) {
@@ -78,13 +74,12 @@ function CadastroEstoque() {
         setDados(response.data);
       });
       setId(dados.id);
-      setSetor(dados.setor);
-      setDescricao(dados.descricao);
+      setNome(dados.nome);
     }
   }
 
   useEffect(() => {
-    buscar(); // eslint-disable-next-line
+    buscar(); 
   }, [id]);
 
   if (!dados) return null;
@@ -95,29 +90,17 @@ function CadastroEstoque() {
         <div className='row'>
           <div className='col-lg-12'>
             <div className='bs-component'>
-              <FormGroup label='Setor: *' htmlFor='inputSetor'>
+              <FormGroup label='Nome: *' htmlFor='inputNome'>
                 <input
                   type='text'
-                  id='inputSetor'
-                  value={setor}
+                  id='inputNome'
+                  value={nome}
                   className='form-control'
                   name='nome'
-                  onChange={(e) => setSetor(e.target.value)}
+                  onChange={(e) => setNome(e.target.value)}
                 />
               </FormGroup>
-              <FormGroup
-                label='Descrição: *'
-                htmlFor='inputDescricao'
-              >
-                <input
-                  type='text'
-                  id='inputDescricao'
-                  value={descricao}
-                  className='form-control'
-                  name='descricao'
-                  onChange={(e) => setDescricao(e.target.value)}
-                />
-              </FormGroup>
+
               <Stack spacing={1} padding={1} direction='row'>
                 <button
                   onClick={salvar}

@@ -22,7 +22,7 @@ function CadastroRaca() {
   const baseURL = `${BASE_URL}/racas`;
 
   const [id, setId] = useState('');
-  const [animal, setAnimal] = useState('');
+  // const [animal, setAnimal] = useState('');
   const [nome, setNome] = useState('');
 
   const [dados, setDados] = useState([]);
@@ -30,11 +30,11 @@ function CadastroRaca() {
   function inicializar() {
     if (idParam == null) {
       setId('');
-      setAnimal('');
+      // setAnimal('');
       setNome('');
     } else {
       setId(dados.id);
-      setAnimal(dados.animal);
+      // setAnimal(dados.animal);
       setNome(dados.nome);
     }
   }
@@ -42,7 +42,7 @@ function CadastroRaca() {
   async function salvar() {
     let data = {
       id,
-      animal,
+      // animal,
       nome,
     };
     data = JSON.stringify(data);
@@ -79,7 +79,7 @@ function CadastroRaca() {
         setDados(response.data);
       });
       setId(dados.id);
-      setAnimal(dados.animal);
+      // setAnimal(dados.animal);
       setNome(dados.nome);
     }
   }
@@ -96,7 +96,7 @@ function CadastroRaca() {
         <div className='row'>
           <div className='col-lg-12'>
             <div className='bs-component'>
-              <FormGroup label='Animal: *' htmlFor='inputAnimal'>
+              {/* <FormGroup label='Animal: *' htmlFor='inputAnimal'>
                 <input
                   type='text'
                   id='inputAnimal'
@@ -105,7 +105,7 @@ function CadastroRaca() {
                   name='animal'
                   onChange={(e) => setAnimal(e.target.value)}
                 />
-              </FormGroup>
+              </FormGroup> */}
               <FormGroup label='Nome da Raça: *' htmlFor='inputNome'>
                 <input
                   type='text'

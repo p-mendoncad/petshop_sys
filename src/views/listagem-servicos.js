@@ -78,14 +78,17 @@ function ListagemServicos() {
                     <th scope='col'>Nome</th>
                     <th scope='col'>Duração</th>
                     <th scope='col'>Preço</th>
+                    <th scope='col'>Cargo</th>
+                    <th scope='col'>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   {dados.map((dado) => (
                     <tr key={dado.id}>
                       <td>{dado.nome}</td>
-                      <td>{dado.duracao}</td>
+                      <td>{dado.duracaoMinutos}</td>
                       <td>R$ {parseFloat(dado.preco).toFixed(2)}</td>
+                      <td>{dado.nomeCargo}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton

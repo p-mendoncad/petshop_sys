@@ -84,6 +84,7 @@ function ListagemPets() {
                     <th scope='col'>Raça</th>
                     <th scope='col'>Cliente</th>
                     <th scope='col'>Histórico Serv.</th>
+                    <th scope='col'>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -95,8 +96,8 @@ function ListagemPets() {
                       {/* <td>{dado.histoVac}</td> */}
                       <td>{dado.obs}</td>
                       <td>{dado.sexo ? 'Macho' : 'Fêmea'}</td>
-                      <td>{dado.idRaca}</td>
-                      <td>{dado.idCliente}</td>
+                      <td>{dado.nomeRaca}</td>
+                      <td>{dado.nomeCliente}</td>
                       <td>{dado.histServ}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>

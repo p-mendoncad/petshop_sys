@@ -78,7 +78,7 @@ function ListagemClientes() {
                         <th scope='col'>Nome</th>
                         <th scope='col'>CPF</th>
                         <th scope='col'>E-mail</th>
-                        <th scope='col'>Telular</th>
+                        <th scope='col'>Telefone</th>
                         {/* <th scope='col'>Logradouro</th>
                         <th scope='col'>Número</th>
                         <th scope='col'>Complemento</th>
@@ -86,6 +86,7 @@ function ListagemClientes() {
                         <th scope='col'>Cidade</th>
                         <th scope='col'>Estado</th> */}
                         <th scope='col'>CEP</th>
+                        <th scope='col'>Ações</th>
                         {/* <th scope='col'>Data de Cadastro</th>*/}
                   </tr>
                 </thead>

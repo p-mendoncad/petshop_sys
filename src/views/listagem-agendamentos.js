@@ -91,9 +91,9 @@ function ListagemAgendamentos() {
                       <td>{dado.horario}</td>
                       <td>{dado.horaEntrada}</td>
                       <td>{dado.horaSaida}</td>
-                      <td>{dado.servico}</td>
-                      <td>{dado.pet}</td>
-                      <td>{dado.funcionario}</td>
+                      <td>{dado.nomeServico}</td>
+                      <td>{dado.nomePet}</td>
+                      <td>{dado.nomeFuncionario}</td>
                       <td> 
                         <Stack spacing={1} padding={0} direction='row'>
                           <IconButton
