@@ -162,7 +162,7 @@ function CadastroProduto() {
                 />
               </FormGroup>
 
-              <FormGroup label='Lote:' htmlFor='inputLote'>
+              <FormGroup label='Lote:*' htmlFor='inputLote'>
                 <input
                   type='text'
                   id='inputLote'

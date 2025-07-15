@@ -39,7 +39,7 @@ function ListagemEstoques() {
         headers: { 'Content-Type': 'application/json' },
       })
       .then(function (response) {
-        mensagemSucesso(`Estoque excluído com sucesso!`);
+        mensagemSucesso(`Setor excluído com sucesso!`);
         setDados(
           dados.filter((dado) => {
             return dado.id !== id;
@@ -47,7 +47,7 @@ function ListagemEstoques() {
         );
       })
       .catch(function (error) {
-        mensagemErro(`Erro ao excluir o estoque`);
+        mensagemErro(`Erro ao excluir o Setor`);
       });
   }
 
